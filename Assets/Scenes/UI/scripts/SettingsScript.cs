@@ -26,8 +26,6 @@ public class SettingsScript : MonoBehaviour
             Screen.SetResolution(1280, 960, fullScreen);
         }
 
-        
-
     }
 
     public void onDropDownValueChangeWindowMode(int val) 
