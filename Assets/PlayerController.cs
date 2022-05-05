@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     // How high the player should jump (space)
     public float jumpHeight = 4.5F;
 
+    public Transform camera;
+
     void Start()
     {
     }
@@ -43,19 +45,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += Vector3.forward * Time.deltaTime * movementSpeed;
+            transform.position += Camera.main.transform.forward * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigidbody.position += Vector3.back * Time.deltaTime * movementSpeed;
+            rigidbody.position += (Camera.main.transform.forward * -1) * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.position += Vector3.left * Time.deltaTime * movementSpeed;
+            rigidbody.position += (Camera.main.transform.right * -1) * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.position += Vector3.right * Time.deltaTime * movementSpeed;
+            rigidbody.position += Camera.main.transform.right * Time.deltaTime * movementSpeed;
         }
     }
 
