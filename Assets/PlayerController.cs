@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 4.5F;
 
     public Transform camera;
+
     void Start()
     {
     }
@@ -42,26 +43,21 @@ public class PlayerController : MonoBehaviour
 
     private void doKeyMovement(Rigidbody rigidbody)
     {
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
-        forward.y = 0;
-        right.y = 0;
-
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += forward.normalized * Time.deltaTime * movementSpeed;
+            transform.position += Camera.main.transform.forward * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigidbody.position += (forward.normalized * -1) * Time.deltaTime * movementSpeed;
+            rigidbody.position += (Camera.main.transform.forward * -1) * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.position += (right.normalized * -1) * Time.deltaTime * movementSpeed;
+            rigidbody.position += (Camera.main.transform.right * -1) * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.position += right.normalized * Time.deltaTime * movementSpeed;
+            rigidbody.position += Camera.main.transform.right * Time.deltaTime * movementSpeed;
         }
     }
 
