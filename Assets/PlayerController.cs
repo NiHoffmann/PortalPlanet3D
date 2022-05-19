@@ -42,10 +42,12 @@ public class PlayerController : MonoBehaviour
 
     private void doKeyMovement(Rigidbody rigidbody)
     {
+
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
         forward.y = 0;
         right.y = 0;
+
 
         if (Input.GetKey(KeyCode.W))
         {

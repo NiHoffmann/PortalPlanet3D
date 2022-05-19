@@ -11,6 +11,7 @@ public class Portal : MonoBehaviour
     Camera portalCam;
     RenderTexture viewTexture;
 
+
     void Awake()
     {
         playerCam = Camera.main;
@@ -23,7 +24,8 @@ public class Portal : MonoBehaviour
 
         Vector3 position = (linkedPortal.transform.position) + (playerCam.transform.forward.normalized * 1f);
         //this doesnt work propperly with player
-        position += Vector3.ProjectOnPlane((collision.gameObject.transform.position - this.transform.position), linkedPortal.transform.position.normalized);
+        if(!collision.gameObject.name.Equals(playerName))
+            position += Vector3.ProjectOnPlane((collision.gameObject.transform.position - this.transform.position), linkedPortal.transform.position.normalized);
         
         collision.gameObject.transform.position = position;
 
