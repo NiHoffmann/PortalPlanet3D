@@ -45,7 +45,7 @@ public class Portal : MonoBehaviour
     
     }
 
-    public void Render()
+    public void Update()
     {
         screen.enabled = false;
 
@@ -57,12 +57,7 @@ public class Portal : MonoBehaviour
         portalCam.transform.SetPositionAndRotation(matrix.GetColumn(3), matrix.rotation);
 
         portalCam.Render();
-    
-        screen.enabled = true;
-    }
 
-    public void Update()
-    {
-        Render();
+        screen.enabled = true;
     }
 }
