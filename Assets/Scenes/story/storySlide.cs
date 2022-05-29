@@ -28,7 +28,7 @@ public class storySlide : MonoBehaviour
         if (storySlideState.state == storySlideState.STATES.TUTORIAL)
         {
             if (counter >= tutorial.Length) {
-                SceneManager.LoadScene(tutorialScene);
+                SManager.loadScene(tutorialScene);
                 return;
             }
 

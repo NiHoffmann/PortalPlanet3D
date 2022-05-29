@@ -12,7 +12,7 @@ public class ButtonBehaviourMainMenu : MonoBehaviour
     public void OnButtonPressNewGame()
     {
         storySlideState.state = storySlideState.STATES.TUTORIAL;
-        SceneManager.LoadScene(newGameScene);
+        SManager.loadScene(newGameScene);
     }
 
     public void OnButtonPressLoadGame()
