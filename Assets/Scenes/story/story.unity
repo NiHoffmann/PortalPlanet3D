@@ -724,7 +724,7 @@ MonoBehaviour:
     a space marine. He took me on a special delivery mission. The details were kept
     secret. Only the goddess could know that from that point on, nothing could go
     any worse.'
-  tutorialScene: test
+  tutorialScene: MainScene
   slideImage: {fileID: 1305667072}
   textField: {fileID: 974069929}
 --- !u!1 &1305667070

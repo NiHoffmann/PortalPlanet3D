@@ -47,7 +47,7 @@ public class Portal : MonoBehaviour
     {
         screen.enabled = false;
 
-        //portalCam.nearClipPlane = Vector3.Distance(portalCam.transform.position, this.transform.position) - 1f;
+        portalCam.nearClipPlane = Vector3.Distance(portalCam.transform.position, this.transform.position) + 0.02f;
 
         CreateViewTexture();
 
