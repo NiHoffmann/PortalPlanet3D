@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
@@ -49,12 +47,13 @@ public class Portal : MonoBehaviour
     {
         screen.enabled = false;
 
-        portalCam.nearClipPlane = Vector3.Distance(portalCam.transform.position, this.transform.position) - 1f;
+        //portalCam.nearClipPlane = Vector3.Distance(portalCam.transform.position, this.transform.position) - 1f;
 
         CreateViewTexture();
 
         var matrix = transform.localToWorldMatrix * linkedPortal.transform.worldToLocalMatrix * playerCam.transform.localToWorldMatrix;
-        portalCam.transform.SetPositionAndRotation(matrix.GetColumn(3), matrix.rotation);
+
+        portalCam.transform.SetPositionAndRotation((matrix).GetColumn(3), matrix.rotation);
 
         portalCam.Render();
 

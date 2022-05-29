@@ -401,10 +401,10 @@ RectTransform:
   m_Father: {fileID: 1090507670}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 25, y: 25}
-  m_SizeDelta: {x: 900, y: 150}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -125, y: 0}
+  m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &974069931
 MonoBehaviour:
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -692,39 +692,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097856371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3350587b48dda46478a5e4da1d286dcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d143b097d5f324fb7ec94ebaaf834e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorial:
-  - {fileID: 21300000, guid: f6c9d299b4589d9459e43768d4e54bca, type: 3}
-  - {fileID: 21300000, guid: fa3cdda01f7d9c848b27340a71f7dcab, type: 3}
-  - {fileID: 21300000, guid: 47c817df6238bda4f851db04df1a8d12, type: 3}
-  - {fileID: 21300000, guid: 05044833df4270a4f9cf4bbdf85ec2fc, type: 3}
-  - {fileID: 21300000, guid: 0ccd162c779a43d4290cc3b331bcd0e9, type: 3}
-  text:
-  - '[w]It''s the year 2500 after the Elypsis galaxy has formed. The 3 suns were
-    glittering along the stars, filling the endless void with the life of creation.
-    We, the Evoren, children of the Sun, were beings created by the light God Evora.
-    Peacefully we enjoyed our livers, unknowing of what lies beyong the stars.'
-  - '[b]On our little planet called EVE, we thrived and were always developing ways
-    to enhance our technological knowledge. We used Airships to travel through space,
-    gravity jewels to lessen the burden of physical labour. We could fly high or
-    use massive Warp stations for fast travel.'
-  - '[b]But in the last 3 decades, our best space marines found a new source of energy,
-    containing mysterious powers, unknown to the most of us. It was bound to become
-    a key for a new door on the other side of our perspective. '
-  - '[w]And then there''s me, a simple entity of this universe, that''s about to
-    embark on a dark yet fullfiling adventure.  I was 13 light years old, when i
-    graduated the Space Academy. I worked to officially become a pilot just like
-    my older brother, who is now the main spaceship captain of the marines. It was
-    him who discovered the new source of energy on one of his adventures, giving
-    a new hope of illumination to our race.'
-  - '[b]I was inspired by him. So I stepped on his path, to write down my own story. 
-    After the academic ceremony, my brother promised me to give me a taste of being
-    a space marine. He took me on a special delivery mission. The details were kept
-    secret. Only the goddess could know that from that point on, nothing could go
-    any worse.'
-  tutorialScene: tutorial
+  loading:
+  - {fileID: 21300000, guid: 130e79ad6850f6a46a3e719c17018bf7, type: 3}
+  - {fileID: 21300000, guid: 728a0808e8a2c7840875969f09858806, type: 3}
+  - {fileID: 21300000, guid: 9ccc372298eb28544b654e9a2ec5fcdd, type: 3}
+  - {fileID: 21300000, guid: eb32d8c1d9d9eb34ab4ca20743af5946, type: 3}
+  - {fileID: 21300000, guid: 8882202e1da64504f9f9e71928e1236e, type: 3}
+  toolTips:
+  - TIpp #1
+  - TIpp #2
   slideImage: {fileID: 1305667072}
   textField: {fileID: 974069929}
 --- !u!1 &1305667070
@@ -785,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 130e79ad6850f6a46a3e719c17018bf7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
