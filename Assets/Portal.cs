@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public GameObject linkedPortal;
+    public Portal linkedPortal;
     public MeshRenderer screen;
     public string playerName;
     Camera playerCam;
@@ -40,7 +40,7 @@ public class Portal : MonoBehaviour
             }
             viewTexture = new RenderTexture(Screen.width, Screen.height, 0);
             portalCam.targetTexture = viewTexture;
-            linkedPortal.GetComponent<Portal>().screen.material.SetTexture("_MainTex", viewTexture);
+            linkedPortal.screen.material.SetTexture("_MainTex", viewTexture);
         }
     
     }
