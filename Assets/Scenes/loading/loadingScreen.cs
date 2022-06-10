@@ -15,8 +15,10 @@ public class loadingScreen : MonoBehaviour
 
     private void Start()
     {
+        textField.GetComponent<TextMeshProUGUI>().SetText(toolTips[Random.Range(0, (toolTips.Length))]);
         op = SceneManager.LoadSceneAsync(SManager.sceeneToLoad);
         op.allowSceneActivation = false;
+        
     }
     // Update is called once per frame
     void Update()
@@ -32,8 +34,8 @@ public class loadingScreen : MonoBehaviour
             slideImage.texture = loading[counter].texture;
             if (counter == 0)
             {
-                textField.GetComponent<TextMeshProUGUI>().SetText(toolTips[Random.Range(0, (toolTips.Length))]);
                 op.allowSceneActivation = true;
+                textField.GetComponent<TextMeshProUGUI>().SetText(toolTips[Random.Range(0, (toolTips.Length))]);    
             }
         }
     }

@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public Portal linkedPortal;
-    public MeshRenderer screen;
-    public string playerName;
-    Camera playerCam;
-    Camera portalCam;
-    RenderTexture viewTexture;
+    [SerializeField] public Portal linkedPortal;
+    [SerializeField] public MeshRenderer portalWindow;
+    [SerializeField] public string playerName;
+    [SerializeField] Camera playerCam;
+    [SerializeField] Camera portalCam;
+    [SerializeField] RenderTexture viewTexture;
+    [SerializeField] public bool isEnabled;
 
 
     void Awake()
@@ -19,14 +20,17 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
+        if (!isEnabled || !linkedPortal.isEnabled) {
+            return; 
+        }
 
-        Vector3 position = (linkedPortal.transform.position) + (playerCam.transform.forward.normalized * 1f);
+        Vector3 position = (linkedPortal.portalCam.transform.position) + (linkedPortal.portalCam.transform.forward * 1f);
         //this doesnt work propperly with player
         //if(!collision.gameObject.name.Equals(playerName))
-        //    position += Vector3.ProjectOnPlane((collision.gameObject.transform.position - this.transform.position), linkedPortal.transform.position.normalized);
+        //   position += Vector3.ProjectOnPlane((collision.gameObject.transform.position - this.transform.position), linkedPortal.transform.position.normalized);
         
         collision.gameObject.transform.position = position;
-
+        //collision.gameObject.transform.rotation = (linkedPortal.portalCam.transform.rotation * collision.transform.rotation);
     }
 
     void CreateViewTexture() 
@@ -38,16 +42,23 @@ public class Portal : MonoBehaviour
             }
             viewTexture = new RenderTexture(Screen.width, Screen.height, 0);
             portalCam.targetTexture = viewTexture;
-            linkedPortal.screen.material.SetTexture("_MainTex", viewTexture);
+            linkedPortal.portalWindow.material.SetTexture("_MainTex", viewTexture);
         }
     
     }
 
     public void Update()
     {
-        screen.enabled = false;
+        if (!isEnabled || !linkedPortal.isEnabled)
+        {
+            if(viewTexture != null)
+                viewTexture.Release();
+            return;
+        }
 
-        portalCam.nearClipPlane = Vector3.Distance(portalCam.transform.position, this.transform.position) + 0.02f;
+        portalWindow.enabled = false;
+
+        portalCam.nearClipPlane = Vector3.Distance(portalCam.transform.position, this.transform.position) + 0.2f;
 
         CreateViewTexture();
 
@@ -57,6 +68,6 @@ public class Portal : MonoBehaviour
 
         portalCam.Render();
 
-        screen.enabled = true;
+        portalWindow.enabled = true;
     }
 }

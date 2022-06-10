@@ -9,17 +9,14 @@ public class GravityGun : MonoBehaviour
     [SerializeField] float maxGrabDist = 10f;
     [SerializeField] float force = 10f;
     [SerializeField] Transform objectHolder;
+    [SerializeField] bool isEnabled;
 
     GameObject grabbedObject = null;
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isEnabled) { return; }
 
         if (grabbedObject && grabbedObject.GetComponent<Rigidbody>())
         {

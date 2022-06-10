@@ -704,6 +704,9 @@ MonoBehaviour:
   toolTips:
   - TIpp #1
   - TIpp #2
+  - TIpp #3
+  - TIpp #4
+  - TIpp #5
   slideImage: {fileID: 1305667072}
   textField: {fileID: 974069929}
 --- !u!1 &1305667070
