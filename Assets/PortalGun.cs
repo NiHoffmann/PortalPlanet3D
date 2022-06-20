@@ -8,7 +8,7 @@ public class PortalGun : MonoBehaviour
     [SerializeField] GameObject portal2;
     [SerializeField] Camera cam;
     [SerializeField] float maxPortalDist;
-    [SerializeField] bool isEnabled;
+    [SerializeField] public bool isEnabled;
     [SerializeField] GameObject crosshair;
 
 
@@ -21,7 +21,7 @@ public class PortalGun : MonoBehaviour
             portalToPlace.transform.position = hit.point;
             portalToPlace.transform.rotation = hit.collider.gameObject.transform.rotation;
 
-            if (Vector3.Distance(portalToPlace.transform.position , otherPortal.transform.position) < 3)
+            if (Vector3.Distance(portalToPlace.transform.position , otherPortal.transform.position) < 2)
             {
                 otherPortal.transform.position = new Vector3(-999, -999, -999);
             }

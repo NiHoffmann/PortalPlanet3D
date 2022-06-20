@@ -16,7 +16,7 @@ public class Portal : MonoBehaviour
     {
         playerCam = Camera.main;
         portalCam = GetComponentInChildren<Camera>();
-        portalCam.nearClipPlane = 1.75f;
+        portalCam.nearClipPlane = 0.75f;
         portalCam.enabled = false;
     }
 

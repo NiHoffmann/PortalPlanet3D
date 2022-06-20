@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Dialog : MonoBehaviour
+public class DialogTutorial : MonoBehaviour
 {
     [SerializeField] Sprite[] sprites;
     [SerializeField] string[] text;
@@ -13,6 +13,9 @@ public class Dialog : MonoBehaviour
     [SerializeField] GameObject textField;
     [SerializeField] bool isEnabled = false;
 
+    //
+    [SerializeField] WeaponSelection weaponSelection;
+
     public void setTexture(Sprite s)
     {
         slideImage.texture = s.texture;
@@ -20,6 +23,14 @@ public class Dialog : MonoBehaviour
 
     public void incrementCounter() {
         counter++;
+
+        for (int i = 0; i < breakPoints.Length; i++)
+        {
+            if (breakPoints[i] != counter)
+            {
+                isEnabled = true;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -46,6 +57,21 @@ public class Dialog : MonoBehaviour
             if (breakPoints[i] == counter)
             {
                 isEnabled = false;
+
+                //gravity gun tutorial
+                if (i == 0) {
+                    weaponSelection.gravityGunUnlocked = true;
+                    weaponSelection.gravityGun.isEnabled = true;
+                    weaponSelection.gravityGun.tutorial = true;
+                }
+
+                //walk to the elevator
+                if(i == 1)
+                {
+
+
+                }
+
                 return;
             }
         }

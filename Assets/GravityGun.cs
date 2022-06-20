@@ -9,7 +9,11 @@ public class GravityGun : MonoBehaviour
     [SerializeField] float maxGrabDist = 10f;
     [SerializeField] float force = 10f;
     [SerializeField] Transform objectHolder;
-    [SerializeField] bool isEnabled;
+    [SerializeField] public bool isEnabled;
+    //tutorial fields
+    public bool tutorial = false;
+    public bool tutorialTaskCompleted = false;
+    [SerializeField] DialogTutorial dt;
 
     GameObject grabbedObject = null;
 
@@ -30,6 +34,10 @@ public class GravityGun : MonoBehaviour
                 Physics.IgnoreCollision(grabbedObject.GetComponent<Collider>(), GetComponent<Collider>(), false);
 
                 grabbedObject = null;
+                if (tutorial && !tutorialTaskCompleted) {
+                    tutorialTaskCompleted = true;
+                    dt.incrementCounter();
+                }
             }
         }
 
