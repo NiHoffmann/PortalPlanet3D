@@ -703,6 +703,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fa3cdda01f7d9c848b27340a71f7dcab, type: 3}
   - {fileID: 21300000, guid: 05044833df4270a4f9cf4bbdf85ec2fc, type: 3}
   - {fileID: 21300000, guid: 47c817df6238bda4f851db04df1a8d12, type: 3}
+  - {fileID: 21300000, guid: 0ccd162c779a43d4290cc3b331bcd0e9, type: 3}
   text2:
   - '[w]It''s the year 2500 after the Elypsis galaxy has formed. The 3 suns were
     glittering along the stars, filling the endless void with the life of creation.'
@@ -718,8 +719,9 @@ MonoBehaviour:
     his path, to write down my own story.'
   - '[w]After the academic ceremony, my brother promised me to give me a taste of
     being a space marine. He took me on a special delivery mission.'
-  - '[b]The details were kept secret. Only the goddess could know that from that
-    point on, nothing could go any worse.'
+  - '[b]The details were kept secret but i was told we were transporting something
+    world-changing.'
+  - '[w]How could I have known that that little box would lead to that much tragedy.'
   tutorialScene: Tutorial2
   slideImage: {fileID: 1305667072}
   textField: {fileID: 974069929}
