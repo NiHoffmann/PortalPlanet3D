@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void doKeyMovement(Rigidbody rigidbody)
+    private void doKeyMovement(Rigidbody body)
     {
 
         Vector3 forward = Camera.main.transform.forward;
@@ -51,19 +51,19 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += forward.normalized * Time.deltaTime * movementSpeed;
+            body.transform.position += forward.normalized * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigidbody.position += (forward.normalized * -1) * Time.deltaTime * movementSpeed;
+            body.transform.position += (forward.normalized * -1) * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.position += (right.normalized * -1) * Time.deltaTime * movementSpeed;
+            body.transform.position += (right.normalized * -1) * Time.deltaTime * movementSpeed;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.position += right.normalized * Time.deltaTime * movementSpeed;
+            body.transform.position += right.normalized * Time.deltaTime * movementSpeed;
         }
     }
 
