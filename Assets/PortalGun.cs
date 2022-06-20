@@ -19,14 +19,21 @@ public class PortalGun : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxPortalDist, LayerMask.GetMask("PortalSurface")))
         {
             portalToPlace.transform.position = hit.point;
-            otherPortal.transform.rotation = hit.collider.transform.rotation;
-            portalToPlace.GetComponent<Portal>().isEnabled = true;
+            portalToPlace.transform.rotation = hit.collider.gameObject.transform.rotation;
 
             if (Vector3.Distance(portalToPlace.transform.position , otherPortal.transform.position) < 3)
             {
                 otherPortal.transform.position = new Vector3(-999, -999, -999);
+            }
+
+            if (otherPortal.transform.position.Equals(new Vector3(-999, -999, -999)) || portalToPlace.transform.position.Equals(new Vector3(-999, -999, -999)))
+            {
                 otherPortal.GetComponent<Portal>().isEnabled = false;
                 portalToPlace.GetComponent<Portal>().isEnabled = false;
+            }
+            else {
+                portalToPlace.GetComponent<Portal>().isEnabled = true;
+                otherPortal.GetComponent<Portal>().isEnabled = true;
             }
             
         }

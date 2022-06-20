@@ -4,35 +4,39 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] public Portal linkedPortal;
     [SerializeField] public MeshRenderer portalWindow;
-    [SerializeField] public string playerName;
-    [SerializeField] Camera playerCam;
-    [SerializeField] Camera portalCam;
-    [SerializeField] RenderTexture viewTexture;
     [SerializeField] public bool isEnabled;
-
+    [SerializeField] MouseLook ml;
+    [SerializeField] float jumpDist = 0.75f;
+    [SerializeField] float jumpPush = 0.5f;
+    Camera playerCam;
+    Camera portalCam;
+    RenderTexture viewTexture;
 
     void Awake()
     {
         playerCam = Camera.main;
         portalCam = GetComponentInChildren<Camera>();
+        portalCam.nearClipPlane = 1.75f;
         portalCam.enabled = false;
     }
 
     void OnTriggerEnter(Collider collision)
     {
+
         if (!isEnabled || !linkedPortal.isEnabled) {
             return; 
         }
 
-        Vector3 position = (linkedPortal.portalCam.transform.position) + (linkedPortal.portalCam.transform.forward * 1f);
-        //this doesnt work propperly with player
-        //if(!collision.gameObject.name.Equals(playerName))
-        //   position += Vector3.ProjectOnPlane((collision.gameObject.transform.position - this.transform.position), linkedPortal.transform.position.normalized);
-        
-        collision.gameObject.transform.position = position;
-        //collision.gameObject.transform.rotation = (linkedPortal.portalCam.transform.rotation * collision.transform.rotation);
-    }
+        Quaternion rot = linkedPortal.transform.rotation;
 
+        collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist) - (linkedPortal.transform.up.normalized*jumpPush);
+
+        MouseLook.xRotation = rot.eulerAngles.x;
+        //what ever the fuck this is but it works 
+        MouseLook.yRotation = rot.eulerAngles.y + Mathf.DeltaAngle(transform.rotation.eulerAngles.y, playerCam.transform.rotation.eulerAngles.y) + 180;
+
+    }
+    
     void CreateViewTexture() 
     {
 
@@ -58,13 +62,9 @@ public class Portal : MonoBehaviour
 
         portalWindow.enabled = false;
 
-        portalCam.nearClipPlane = Vector3.Distance(portalCam.transform.position, this.transform.position) + 0.2f;
-
         CreateViewTexture();
 
-        var matrix = transform.localToWorldMatrix * linkedPortal.transform.worldToLocalMatrix * playerCam.transform.localToWorldMatrix;
-
-        portalCam.transform.SetPositionAndRotation((matrix).GetColumn(3), matrix.rotation);
+        portalCam.transform.SetPositionAndRotation(transform.position, (transform.localToWorldMatrix * playerCam.transform.localToWorldMatrix * playerCam.transform.localToWorldMatrix).rotation);
 
         portalCam.Render();
 
