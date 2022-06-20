@@ -18,11 +18,17 @@ public class storySlide : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
             counter += 1;
 
         if (Input.GetMouseButtonDown(1))
+        {
+            if (counter == 0) {
+                return;
+            }
             counter -= 1;
+        }
 
         if (storySlideState.state == storySlideState.STATES.TUTORIAL2)
         {
@@ -43,6 +49,11 @@ public class storySlide : MonoBehaviour
             {
                 tmp.color = Color.white;
             }
+            if (text2[counter].Substring(0, 3).Equals("[r]"))
+            {
+                tmp.color = Color.red;
+            }
+
         }
     }
 }
