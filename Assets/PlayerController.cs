@@ -11,15 +11,15 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 4.5F;
 
     public Transform camera;
+    [SerializeField] Rigidbody body;
     void Start()
     {
     }
 
     void Update()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        doKeyMovement(rigidbody);
-        doJump(rigidbody);
+        doKeyMovement(body);
+        doJump(body);
     }
 
     void OnCollisionEnter(Collision collision)

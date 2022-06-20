@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     // Initialize route with a GameObject with children GameObjects
     private void initRouteWithGameObject()
     {
-        if ((routeGameObject != null) && (routeGameObject.transform.GetChildCount() > 0))
+        if ((routeGameObject != null) && (routeGameObject.transform.childCount > 0))
         {
             route = new Vector3[routeGameObject.transform.childCount];
             for (int i = 0; i < routeGameObject.transform.childCount; i++)
