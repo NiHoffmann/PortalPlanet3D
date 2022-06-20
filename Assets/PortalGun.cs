@@ -42,18 +42,27 @@ public class PortalGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isEnabled) {
+            crosshair.SetActive(false);
+            return; 
+        }
+
         RaycastHit hit;
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
-        if (Physics.Raycast(ray, out hit, maxPortalDist, LayerMask.GetMask("PortalSurface"))) {
+        if (Physics.Raycast(ray, out hit, maxPortalDist, ~24))
+        {
+            if (hit.collider.gameObject.layer != 6 && hit.collider.gameObject.layer != 7)
+            {
+                crosshair.SetActive(false);
+                return;
+            }
             crosshair.SetActive(true);
         }
         else
         {
-            crosshair.SetActive(false);
+            return;
         }
-
-        if (!isEnabled) { return; }
 
         if (Input.GetMouseButtonDown(0))
         {

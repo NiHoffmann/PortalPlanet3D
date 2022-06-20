@@ -12,6 +12,15 @@ public class DialogTutorial : MonoBehaviour
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
     [SerializeField] bool isEnabled = false;
+    [SerializeField] ElevatorColliderScript elevatorColliderScript;
+    [SerializeField] PortalGunTutorialScript portalGunTutorialScript;
+    public enum State
+    {
+        gravityGunTutorial,
+        elevatorCollider,
+        portalGunTutorialPickup,
+        portalGunTutorialUse
+    }
 
     //
     [SerializeField] WeaponSelection weaponSelection;
@@ -31,6 +40,18 @@ public class DialogTutorial : MonoBehaviour
                 isEnabled = true;
             }
         }
+    }
+
+    public int breakPoint() {
+        for (int i = 0; i < breakPoints.Length; i++)
+        {
+            if (breakPoints[i] == counter)
+            {
+                isEnabled = false;
+                return i;      
+            }          
+        }
+        return -1;
     }
 
     // Update is called once per frame
@@ -53,28 +74,34 @@ public class DialogTutorial : MonoBehaviour
             counter++;
         }
 
-        for (int i = 0; i < breakPoints.Length; i++) {
-            if (breakPoints[i] == counter)
-            {
-                isEnabled = false;
-
-                //gravity gun tutorial
-                if (i == 0) {
-                    weaponSelection.gravityGunUnlocked = true;
-                    weaponSelection.gravityGun.isEnabled = true;
-                    weaponSelection.gravityGun.tutorial = true;
-                }
-
-                //walk to the elevator
-                if(i == 1)
-                {
-
-
-                }
-
-                return;
-            }
+        int i = breakPoint();
+        //gravity gun tutorial
+        if (i == (int)State.gravityGunTutorial)
+        {
+            weaponSelection.gravityGunUnlocked = true;
+            weaponSelection.gravityGun.isEnabled = true;
+            weaponSelection.gravityGun.tutorial = true;
+         
         }
+
+        //walk to the elevator
+        if (i == (int)State.elevatorCollider)
+        {
+            elevatorColliderScript.isEnabled = true;
+        }
+
+        //pick up portal gun
+        if (i == (int)State.portalGunTutorialPickup) 
+        {
+            portalGunTutorialScript.isEnabled = true;
+        }
+
+        //use portalgun
+        if (i == (int)State.portalGunTutorialUse) { 
+        
+        }
+
+        if (i != -1) return;
 
         if (counter >= text.Length) {
             isEnabled = false;

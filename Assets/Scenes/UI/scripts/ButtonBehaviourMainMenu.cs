@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
@@ -11,7 +9,7 @@ public class ButtonBehaviourMainMenu : MonoBehaviour
 
     public void OnButtonPressNewGame()
     {
-        storySlideState.state = storySlideState.STATES.TUTORIAL;
+        storySlideState.state = storySlideState.STATES.TUTORIAL2;
         SManager.loadScene(newGameScene);
     }
 

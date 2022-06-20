@@ -4,8 +4,8 @@ using TMPro;
 
 public class storySlide : MonoBehaviour
 {
-    [SerializeField] Sprite[] tutorial = new Sprite[5];
-    [SerializeField] string[] text = new string[5];
+    [SerializeField] Sprite[] tutorial2 = new Sprite[5];
+    [SerializeField] string[] text2 = new string[5];
     [SerializeField] string tutorialScene;
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
@@ -24,21 +24,22 @@ public class storySlide : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
             counter -= 1;
 
-        if (storySlideState.state == storySlideState.STATES.TUTORIAL)
+        if (storySlideState.state == storySlideState.STATES.TUTORIAL2)
         {
-            if (counter >= tutorial.Length) {
+            if (counter >= tutorial2.Length) {
+                storySlideState.state = storySlideState.STATES.TUTORIAL3;
                 SManager.loadScene(tutorialScene);
                 return;
             }
 
-            setTexture(tutorial[counter]);
+            setTexture(tutorial2[counter]);
             TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
-            tmp.SetText(text[counter].Substring(3));
+            tmp.SetText(text2[counter].Substring(3));
 
-            if (text[counter].Substring(0, 3).Equals("[b]")) {
+            if (text2[counter].Substring(0, 3).Equals("[b]")) {
                 tmp.color = Color.black;
             }
-            if (text[counter].Substring(0, 3).Equals("[w]"))
+            if (text2[counter].Substring(0, 3).Equals("[w]"))
             {
                 tmp.color = Color.white;
             }
