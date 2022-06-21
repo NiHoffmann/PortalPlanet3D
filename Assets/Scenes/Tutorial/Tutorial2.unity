@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1391,7 +1391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 460, y: 250}
+  m_AnchoredPosition: {x: 327, y: 138}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180537333
@@ -1414,20 +1414,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fab6d0f5969d34d419f93670d1f85007, type: 3}
   text:
   - '[Press Enter]'
-  - There are cubes behind you ....  you should try out your Gravity Gun ....
-  - Press Right Mouse to lick them Up                                                   
-    Press Left Mouse to launche them ....
+  - We are under attack! You will need to use your Gravity Gun! Try it out on those
+    boxes behind you.
+  - Press right mouse to pick them up.                                     Press
+    left mouse to launch them
   - '[BreakPoint]'
   - Good Job!
-  - Now get into the elevator and get up here.
+  - Now get into the elevator and come up here!
   - '[Breakpoint]'
-  - Looks like the elevator is Broken pick up the portalgun on the table.
-  - Pick up the portalgun by pressing [e]
+  - Looks like the elevator is broken pick up the portalgun on the table.
+  - Pick up the portalgun by pressing [e].
   - '[BreakPoint]'
   - 'Good Job! '
-  - 'You can Place 2 Portals using your Left/Right Mouse Button '
+  - You can place 2 portals using your left/right mouse button.
   - '[BreakPoint]'
-  spriteNr: 040000000200000002000000ffffffff0100000002000000ffffffff0000000002000000ffffffff0100000002000000ffffffff
+  spriteNr: 040000000000000002000000ffffffff0100000000000000ffffffff0000000002000000ffffffff0100000002000000ffffffff
   breakPoints: 0300000006000000090000000c000000
   counter: 0
   slideImage: {fileID: 560503836}
