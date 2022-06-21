@@ -69,7 +69,7 @@ public class DialogTutorial : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             counter++;
         }
