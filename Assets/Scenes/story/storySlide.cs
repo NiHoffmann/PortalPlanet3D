@@ -4,11 +4,15 @@ using TMPro;
 
 public class storySlide : MonoBehaviour
 {
-    [SerializeField] Sprite[] tutorial2 = new Sprite[5];
-    [SerializeField] string[] text2 = new string[5];
+    [SerializeField] Sprite[] tutorial1 = new Sprite[5];
+    [SerializeField] string[] text1 = new string[5];
+    [SerializeField] Sprite[] erstesLevel = new Sprite[5];
+    [SerializeField] string[] textErstesLevel = new string[5];
     [SerializeField] string tutorialScene;
+    [SerializeField] string ertesLevelScene;
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
+    [SerializeField] AudioSource flipSound;
     int counter = 0;
 
     public void setTexture(Sprite s) {
@@ -20,40 +24,62 @@ public class storySlide : MonoBehaviour
     {
 
         if (Input.GetMouseButtonDown(0))
+        {
             counter += 1;
+            flipSound.Play();
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (counter == 0) {
+            flipSound.Play();
+            if (counter == 0)
+            {
                 return;
             }
             counter -= 1;
         }
 
-        if (storySlideState.state == storySlideState.STATES.TUTORIAL2)
+        if (storySlideState.state == storySlideState.STATES.TUTORIAL1)
         {
-            if (counter >= tutorial2.Length) {
-                storySlideState.state = storySlideState.STATES.TUTORIAL3;
+            if (counter >= tutorial1.Length)
+            {
+                storySlideState.state = storySlideState.STATES.ERSTESLEVEL;
+                counter = 0;
                 SManager.loadScene(tutorialScene);
                 return;
             }
 
-            setTexture(tutorial2[counter]);
+            setTexture(tutorial1[counter]);
             TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
-            tmp.SetText(text2[counter].Substring(3));
+            tmp.SetText(text1[counter].Substring(3));
 
-            if (text2[counter].Substring(0, 3).Equals("[b]")) {
+            if (text1[counter].Substring(0, 3).Equals("[b]"))
+            {
                 tmp.color = Color.black;
             }
-            if (text2[counter].Substring(0, 3).Equals("[w]"))
+            if (text1[counter].Substring(0, 3).Equals("[w]"))
             {
                 tmp.color = Color.white;
             }
-            if (text2[counter].Substring(0, 3).Equals("[r]"))
+            if (text1[counter].Substring(0, 3).Equals("[r]"))
             {
                 tmp.color = Color.red;
             }
 
+        }
+
+
+        if (storySlideState.state == storySlideState.STATES.ERSTESLEVEL)
+        {
+            if (counter >= erstesLevel.Length)
+            {
+                SManager.loadScene(ertesLevelScene);
+                return;
+            }
+
+            setTexture(erstesLevel[counter]);
+            TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
+            tmp.SetText(textErstesLevel[counter].Substring(3));
         }
     }
 }

@@ -9,7 +9,7 @@ public class ButtonBehaviourMainMenu : MonoBehaviour
 
     public void OnButtonPressNewGame()
     {
-        storySlideState.state = storySlideState.STATES.TUTORIAL2;
+        storySlideState.state = storySlideState.STATES.TUTORIAL1;
         SManager.loadScene(newGameScene);
     }
 
