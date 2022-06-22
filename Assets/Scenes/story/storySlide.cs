@@ -13,6 +13,7 @@ public class storySlide : MonoBehaviour
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
     [SerializeField] AudioSource flipSound;
+    Sprite current;
     int counter = 0;
 
     public void setTexture(Sprite s) {
@@ -26,12 +27,10 @@ public class storySlide : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             counter += 1;
-            flipSound.Play();
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            flipSound.Play();
             if (counter == 0)
             {
                 return;
@@ -49,7 +48,13 @@ public class storySlide : MonoBehaviour
                 return;
             }
 
-            setTexture(tutorial1[counter]);
+            if (counter-1 >= 0)
+                if (!tutorial1[counter].Equals(current))
+                {
+                    flipSound.Play();
+                }
+
+            setTex(tutorial1[counter]);
             setText(text1);
         }
 
@@ -63,9 +68,20 @@ public class storySlide : MonoBehaviour
                 return;
             }
 
-            setTexture(erstesLevel[counter]);
+            if (counter>= 1)
+                if (!erstesLevel[counter].Equals(current))
+                {
+                    flipSound.Play();
+                }
+
+            setTex(erstesLevel[counter]);
             setText(textErstesLevel);
         }
+    }
+
+    void setTex(Sprite sprite) {
+        current = sprite;
+        setTexture(current);
     }
 
     void setText(string[] text) {
