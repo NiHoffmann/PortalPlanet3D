@@ -16,7 +16,8 @@ public class storySlide : MonoBehaviour
     Sprite current;
     int counter = 0;
 
-    public void setTexture(Sprite s) {
+    public void setTexture(Sprite s)
+    {
         slideImage.texture = s.texture;
     }
 
@@ -27,10 +28,12 @@ public class storySlide : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             counter += 1;
+            flipSound.Play();
         }
 
         if (Input.GetMouseButtonDown(1))
         {
+            flipSound.Play();
             if (counter == 0)
             {
                 return;
@@ -48,7 +51,8 @@ public class storySlide : MonoBehaviour
                 return;
             }
 
-            if (counter-1 >= 0)
+            setTexture(tutorial1[counter]);
+            if (counter - 1 >= 0)
                 if (!tutorial1[counter].Equals(current))
                 {
                     flipSound.Play();
@@ -58,18 +62,18 @@ public class storySlide : MonoBehaviour
             setText(text1);
         }
 
-        }
-
 
         if (storySlideState.state == storySlideState.STATES.ERSTESLEVEL)
         {
             if (counter >= erstesLevel.Length)
             {
+                counter = 0;
                 SManager.loadScene(ertesLevelScene);
                 return;
             }
 
-            if (counter>= 1)
+            setTexture(erstesLevel[counter]);
+            if (counter >= 1)
                 if (!erstesLevel[counter].Equals(current))
                 {
                     flipSound.Play();
@@ -80,12 +84,14 @@ public class storySlide : MonoBehaviour
         }
     }
 
-    void setTex(Sprite sprite) {
+    void setTex(Sprite sprite)
+    {
         current = sprite;
         setTexture(current);
     }
 
-    void setText(string[] text) {
+    void setText(string[] text)
+    {
         TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
         if (text[counter].Length > 3)
         {
@@ -102,6 +108,6 @@ public class storySlide : MonoBehaviour
                 tmp.color = Color.red;
             }
         }
+        tmp.SetText(text[counter].Substring(3));
     }
 }
-
