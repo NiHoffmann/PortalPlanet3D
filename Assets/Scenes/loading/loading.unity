@@ -702,11 +702,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eb32d8c1d9d9eb34ab4ca20743af5946, type: 3}
   - {fileID: 21300000, guid: 8882202e1da64504f9f9e71928e1236e, type: 3}
   toolTips:
-  - TIpp #1
-  - TIpp #2
-  - TIpp #3
-  - TIpp #4
-  - TIpp #5
+  - You can place a portal when a circle appears in the center of your screen.
+  - "Evoren actually don\xB4t have hands!"
+  - You can hold objects with the rigth mouse button. Throw them by pressing left
+    mouse button.
+  - A year on Eve is 37 earth years long!
+  - You can switch between gravity and portal gun with [1] or [2].
   slideImage: {fileID: 1305667072}
   textField: {fileID: 974069929}
 --- !u!1 &1305667070

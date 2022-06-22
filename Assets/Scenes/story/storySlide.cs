@@ -58,12 +58,13 @@ public class storySlide : MonoBehaviour
             setText(text1);
         }
 
+        }
+
 
         if (storySlideState.state == storySlideState.STATES.ERSTESLEVEL)
         {
             if (counter >= erstesLevel.Length)
             {
-                counter = 0;
                 SManager.loadScene(ertesLevelScene);
                 return;
             }
@@ -101,7 +102,6 @@ public class storySlide : MonoBehaviour
                 tmp.color = Color.red;
             }
         }
-        tmp.SetText(text[counter].Substring(3));
     }
 }
 
