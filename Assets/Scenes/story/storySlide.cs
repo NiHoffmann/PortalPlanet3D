@@ -51,7 +51,6 @@ public class storySlide : MonoBehaviour
                 return;
             }
 
-            setTexture(tutorial1[counter]);
             if (counter - 1 >= 0)
                 if (!tutorial1[counter].Equals(current))
                 {
@@ -72,7 +71,6 @@ public class storySlide : MonoBehaviour
                 return;
             }
 
-            setTexture(erstesLevel[counter]);
             if (counter >= 1)
                 if (!erstesLevel[counter].Equals(current))
                 {
