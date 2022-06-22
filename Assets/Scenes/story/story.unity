@@ -820,9 +820,9 @@ MonoBehaviour:
     world-changing. '
   - '[w]How could I have known that that little box would lead to that much tragedy.'
   erstesLevel:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 029f18c78b710e14992c43ea5de29b5b, type: 3}
+  - {fileID: 21300000, guid: 2b888ae8b1d3c0b44be4d05208674e51, type: 3}
+  - {fileID: 21300000, guid: a4696d9f69719a24ab216ccf654f492b, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   textErstesLevel:
