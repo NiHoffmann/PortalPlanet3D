@@ -818,7 +818,8 @@ MonoBehaviour:
     being a space marine. He took me on a special delivery mission. '
   - '[b]The details were kept secret but i was told we were transporting something
     world-changing. '
-  - '[w]How could I have known that that little box would lead to that much tragedy.'
+  - '[w]How could I have known that that little box would lead to that much tragedy. 
+    My brother and I suddenly faced a horrifying opponent.'
   erstesLevel:
   - {fileID: 21300000, guid: 029f18c78b710e14992c43ea5de29b5b, type: 3}
   - {fileID: 21300000, guid: 2b888ae8b1d3c0b44be4d05208674e51, type: 3}
