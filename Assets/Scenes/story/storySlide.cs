@@ -50,10 +50,29 @@ public class storySlide : MonoBehaviour
             }
 
             setTexture(tutorial1[counter]);
-            TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
-            tmp.SetText(text1[counter].Substring(3));
+            setText(text1);
+        }
 
-            if (text1[counter].Substring(0, 3).Equals("[b]"))
+
+        if (storySlideState.state == storySlideState.STATES.ERSTESLEVEL)
+        {
+            if (counter >= erstesLevel.Length)
+            {
+                counter = 0;
+                SManager.loadScene(ertesLevelScene);
+                return;
+            }
+
+            setTexture(erstesLevel[counter]);
+            setText(textErstesLevel);
+        }
+    }
+
+    void setText(string[] text) {
+        TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
+        if (text[counter].Length > 3)
+        {
+            if (text[counter].Substring(0, 3).Equals("[b]"))
             {
                 tmp.color = Color.black;
             }
@@ -65,22 +84,8 @@ public class storySlide : MonoBehaviour
             {
                 tmp.color = Color.red;
             }
-
         }
-
-
-        if (storySlideState.state == storySlideState.STATES.ERSTESLEVEL)
-        {
-            if (counter >= erstesLevel.Length)
-            {
-                SManager.loadScene(ertesLevelScene);
-                return;
-            }
-
-            setTexture(erstesLevel[counter]);
-            TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
-            tmp.SetText(textErstesLevel[counter].Substring(3));
-        }
+        tmp.SetText(text[counter].Substring(3));
     }
 }
 
