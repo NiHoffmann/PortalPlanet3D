@@ -22,7 +22,7 @@ public class GravityGun : MonoBehaviour
     {
         if (!isEnabled) { return; }
 
-        if (grabbedObject && grabbedObject.GetComponent<Rigidbody>())
+        if (grabbedObject && grabbedObject.GetComponent<Rigidbody>() && grabbedObject.CompareTag("Throwable"))
         {
 
             grabbedObject.GetComponent<Rigidbody>().MovePosition(objectHolder.transform.position);
@@ -43,7 +43,7 @@ public class GravityGun : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (grabbedObject && grabbedObject.GetComponent<Rigidbody>())
+            if (grabbedObject && grabbedObject.GetComponent<Rigidbody>() && grabbedObject.CompareTag("Throwable"))
             {
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 grabbedObject = null;
@@ -56,7 +56,7 @@ public class GravityGun : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, maxGrabDist))
                 {
                     grabbedObject = hit.collider.gameObject;
-                    if (grabbedObject.GetComponent<Rigidbody>())
+                    if (grabbedObject.GetComponent<Rigidbody>() && grabbedObject.CompareTag("Throwable"))
                     {
                         //ignore collision with player 
                         Physics.IgnoreCollision(grabbedObject.GetComponent<Collider>(), GetComponent<Collider>(), true);
