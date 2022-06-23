@@ -5,11 +5,11 @@ public class Portal : MonoBehaviour
     [SerializeField] public Portal linkedPortal;
     [SerializeField] public MeshRenderer portalWindow;
     [SerializeField] public bool isEnabled;
-    [SerializeField] float jumpDist = 0.75f;
-    [SerializeField] float jumpPush = 0.5f;
+    [SerializeField] float jumpDist = 0.5f;
     Camera playerCam;
     Camera portalCam;
     RenderTexture viewTexture;
+    bool used = false;
 
     void Awake()
     {
@@ -26,19 +26,28 @@ public class Portal : MonoBehaviour
             return; 
         }
 
-        GetComponent<AudioSource>().Play();
-
-        if (collision.gameObject.name.Equals("PlayerCharacter"))
+        if (!used)
         {
-            Quaternion rot = linkedPortal.transform.rotation;
-            MouseLook.yRotation = rot.eulerAngles.y + Mathf.DeltaAngle(transform.localEulerAngles.y, playerCam.transform.localEulerAngles.y) + 180;
-        }
-            collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist) - (linkedPortal.transform.up.normalized * jumpPush);
-        
-        
+            GetComponent<AudioSource>().Play();
 
+            if (collision.gameObject.name.Equals("PlayerCharacter"))
+            {
+                Quaternion rot = linkedPortal.transform.rotation;
+                MouseLook.yRotation = rot.eulerAngles.y + Mathf.DeltaAngle(transform.localEulerAngles.y, playerCam.transform.localEulerAngles.y) + 180;
+            }
+
+            linkedPortal.used = true;
+            used = true;
+            collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist);
+        }
+        
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        used = false;
+    }
+
     void CreateViewTexture() 
     {
 
