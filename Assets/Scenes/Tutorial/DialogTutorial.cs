@@ -15,6 +15,8 @@ public class DialogTutorial : MonoBehaviour
     [SerializeField] bool isEnabled = false;
     [SerializeField] ElevatorColliderScript elevatorColliderScript;
     [SerializeField] PortalGunTutorialScript portalGunTutorialScript;
+    [SerializeField] AudioClip[] sounds;
+    [SerializeField] AudioSource soundPlayer;
     public enum State
     {
         gravityGunTutorial,
@@ -34,12 +36,10 @@ public class DialogTutorial : MonoBehaviour
     public void incrementCounter() {
         counter++;
 
-        for (int i = 0; i < breakPoints.Length; i++)
-        {
-            if (breakPoints[i] != counter)
-            {
-                isEnabled = true;
-            }
+        if (breakPoint() == -1) {
+            soundPlayer.clip = sounds[(int)Random.Range(0, sounds.Length - 0.1f)];
+            soundPlayer.Play();
+            isEnabled = true;
         }
     }
 
@@ -72,7 +72,7 @@ public class DialogTutorial : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            counter++;
+            incrementCounter();
         }
 
         TextMeshProUGUI objectiveText = objectiveTextField.GetComponent<TextMeshProUGUI>();

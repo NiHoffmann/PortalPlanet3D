@@ -5,7 +5,6 @@ public class Portal : MonoBehaviour
     [SerializeField] public Portal linkedPortal;
     [SerializeField] public MeshRenderer portalWindow;
     [SerializeField] public bool isEnabled;
-    [SerializeField] MouseLook ml;
     [SerializeField] float jumpDist = 0.75f;
     [SerializeField] float jumpPush = 0.5f;
     Camera playerCam;
@@ -26,6 +25,8 @@ public class Portal : MonoBehaviour
         if (!isEnabled || !linkedPortal.isEnabled) {
             return; 
         }
+
+        GetComponent<AudioSource>().Play();
 
         if (collision.gameObject.name.Equals("PlayerCharacter"))
         {

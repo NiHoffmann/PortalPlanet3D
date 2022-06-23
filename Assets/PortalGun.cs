@@ -10,6 +10,8 @@ public class PortalGun : MonoBehaviour
     [SerializeField] float maxPortalDist;
     [SerializeField] public bool isEnabled;
     [SerializeField] GameObject crosshair;
+    [SerializeField] AudioClip placePortalSound;
+    [SerializeField] AudioSource playerAudioSource;
 
 
     public void placePortal(GameObject portalToPlace, GameObject otherPortal) {
@@ -18,6 +20,8 @@ public class PortalGun : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, maxPortalDist,LayerMask.GetMask("PortalSurface")))
         {
+            playerAudioSource.PlayOneShot(placePortalSound);
+
             portalToPlace.transform.position = hit.point;
             portalToPlace.transform.rotation = hit.collider.gameObject.transform.rotation;
 

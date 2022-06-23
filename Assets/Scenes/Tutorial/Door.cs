@@ -5,10 +5,20 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Transform door;
-    public float startingPosition = -12.71f;
-    public float endPosition = -15.00f;
+    float startingPosition;
     public float speed;
     bool open = false;
+    bool opening = false;
+    bool closing = true;
+    [SerializeField] float dist = 2.3f;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip soundOpen;
+    [SerializeField] AudioClip soundClose;
+
+    void Start()
+    {
+        startingPosition = door.transform.position.x;
+    }
 
 
 
@@ -16,13 +26,24 @@ public class Door : MonoBehaviour
     {
         if (open)
         {
-            if (door.transform.position.x > endPosition)
+            if (!opening) {
+                source.PlayOneShot(soundOpen);
+                opening = true;
+                closing = false;
+            }
+            if (door.transform.position.x > startingPosition + dist)
             {
                 door.transform.Translate(-speed * Time.deltaTime, 0f, 0f);
             }
+            
         }
         else
         {
+            if (!closing) {
+                source.PlayOneShot(soundClose);
+                opening = false;
+                closing = true;
+            }
             if (door.transform.position.x < startingPosition)
             {
                 door.transform.Translate(speed * Time.deltaTime, 0f, 0f);
@@ -32,7 +53,8 @@ public class Door : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collision)
-    {
+    { 
+
         open = true;
     }
 

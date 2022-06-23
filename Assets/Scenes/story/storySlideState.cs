@@ -7,5 +7,5 @@ public static class storySlideState
         ERSTESLEVEL
     }
 
-    [SerializeField] public static STATES state = STATES.ERSTESLEVEL;
+    [SerializeField] public static STATES state = STATES.TUTORIAL1;
 }
