@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class PlayerController : MonoBehaviour
     {
         doKeyMovement(body);
         doJump(body);
+        if (body.transform.position.y < -20f) {
+            SceneManager.LoadScene("game_over");
+        }
     }
+
 
     void OnCollisionEnter(Collision collision)
     {
