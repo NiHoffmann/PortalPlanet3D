@@ -105,6 +105,8 @@ public class storySlide : MonoBehaviour
                 tmp.color = Color.red;
             }
         }
-        tmp.SetText(text[counter].Substring(3));
+
+        if(text[counter].Length >= 3)
+            tmp.SetText(text[counter].Substring(3));
     }
 }
