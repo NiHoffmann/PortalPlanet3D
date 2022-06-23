@@ -30,8 +30,8 @@ public class Portal : MonoBehaviour
 
         if (collision.gameObject.name.Equals("PlayerCharacter"))
         {
-            Quaternion rot = linkedPortal.portalCam.transform.rotation;
-            MouseLook.yRotation = rot.eulerAngles.y + 180 - Mathf.DeltaAngle(transform.rotation.eulerAngles.y, playerCam.transform.rotation.eulerAngles.y);
+            Quaternion rot = linkedPortal.transform.rotation;
+            MouseLook.yRotation = rot.eulerAngles.y + Mathf.DeltaAngle(transform.localEulerAngles.y, playerCam.transform.localEulerAngles.y) + 180;
         }
             collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist) - (linkedPortal.transform.up.normalized * jumpPush);
         
@@ -66,8 +66,8 @@ public class Portal : MonoBehaviour
 
         CreateViewTexture();
 
-        Quaternion rot = linkedPortal.transform.rotation;
-        rot = Quaternion.Euler(new Vector3(rot.eulerAngles.x, rot.eulerAngles.y + Mathf.DeltaAngle(transform.rotation.eulerAngles.y, playerCam.transform.rotation.eulerAngles.y) + 180, rot.eulerAngles.z));
+        Quaternion rot = transform.rotation;
+        rot = Quaternion.Euler(new Vector3(rot.eulerAngles.x, rot.eulerAngles.y + Mathf.DeltaAngle(linkedPortal.transform.localEulerAngles.y, playerCam.transform.localEulerAngles.y) + 180, rot.eulerAngles.z));
 
         portalCam.transform.SetPositionAndRotation(transform.position, rot);
 
