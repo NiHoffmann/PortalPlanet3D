@@ -32,8 +32,7 @@ public class Portal : MonoBehaviour
             Quaternion rot = linkedPortal.portalCam.transform.rotation;
             MouseLook.yRotation = rot.eulerAngles.y + 180 - Mathf.DeltaAngle(transform.rotation.eulerAngles.y, playerCam.transform.rotation.eulerAngles.y);
         }
-           
-        collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist) - (linkedPortal.transform.up.normalized * jumpPush);
+            collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist) - (linkedPortal.transform.up.normalized * jumpPush);
         
         
 
