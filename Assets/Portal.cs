@@ -27,13 +27,14 @@ public class Portal : MonoBehaviour
             return; 
         }
 
-        Quaternion rot = linkedPortal.transform.rotation;
-        MouseLook.zRotation = playerCam.transform.eulerAngles.z;
-        MouseLook.yRotation = rot.eulerAngles.y + Mathf.DeltaAngle(transform.rotation.eulerAngles.y, playerCam.transform.rotation.eulerAngles.y) + 180;
-        MouseLook.xRotation = playerCam.transform.eulerAngles.x;
-
-        collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist) - (linkedPortal.transform.up.normalized*jumpPush);
-
+        if (collision.gameObject.name.Equals("PlayerCharacter"))
+        {
+            Quaternion rot = linkedPortal.portalCam.transform.rotation;
+            MouseLook.yRotation = rot.eulerAngles.y + 180 - Mathf.DeltaAngle(transform.rotation.eulerAngles.y, playerCam.transform.rotation.eulerAngles.y);
+        }
+           
+        collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist) - (linkedPortal.transform.up.normalized * jumpPush);
+        
         
 
     }
