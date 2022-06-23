@@ -31,11 +31,11 @@ public class MouseLook : MonoBehaviour
         yRotation += mouseX;
         
         while (xRotation > 90f) {
-            xRotation -= 90f;
+            xRotation -= 1f;
         }
-        while(xRotation > 90f)
+        while(xRotation < -90f)
         {
-            xRotation -= 90f;
+            xRotation += 1f;
         }
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, zRotation);
