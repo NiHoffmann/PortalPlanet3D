@@ -11,6 +11,7 @@ public class DialogTutorial : MonoBehaviour
     [SerializeField] int counter = 0;
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
+    [SerializeField] GameObject objectiveTextField;
     [SerializeField] bool isEnabled = false;
     [SerializeField] ElevatorColliderScript elevatorColliderScript;
     [SerializeField] PortalGunTutorialScript portalGunTutorialScript;
