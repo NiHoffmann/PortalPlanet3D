@@ -7,7 +7,7 @@ public class LevelEndCollider : MonoBehaviour
     {
         if (collider.gameObject.name.Equals(player.name)) {
             storySlideState.state = storySlideState.STATES.ERSTESLEVEL;
-            SManager.loadScene("test");
+            SManager.loadScene("story");
         }
     }
 }

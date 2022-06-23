@@ -45,7 +45,6 @@ public class storySlide : MonoBehaviour
         {
             if (counter >= tutorial1.Length)
             {
-                storySlideState.state = storySlideState.STATES.ERSTESLEVEL;
                 counter = 0;
                 SManager.loadScene(tutorialScene);
                 return;
