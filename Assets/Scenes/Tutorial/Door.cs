@@ -8,8 +8,7 @@ public class Door : MonoBehaviour
     float startingPosition;
     public float speed;
     bool open = false;
-    bool opening = false;
-    bool closing = true;
+    bool moving = false;
     [SerializeField] float dist = 2.3f;
     [SerializeField] AudioSource source;
     [SerializeField] AudioClip soundOpen;
@@ -26,35 +25,44 @@ public class Door : MonoBehaviour
     {
         if (open)
         {
-            if (!opening) {
-                source.PlayOneShot(soundOpen);
-                opening = true;
-                closing = false;
-            }
+
             if (door.transform.position.x > startingPosition + dist)
             {
+                if (!moving)
+                {
+                    source.PlayOneShot(soundOpen);
+                    moving = true;
+                }
                 door.transform.Translate(-speed * Time.deltaTime, 0f, 0f);
             }
-            
+            else
+            {
+                moving = false;
+            }
+
         }
         else
         {
-            if (!closing) {
-                source.PlayOneShot(soundClose);
-                opening = false;
-                closing = true;
-            }
             if (door.transform.position.x < startingPosition)
             {
+                if (!moving)
+                {
+                    source.PlayOneShot(soundClose);
+                    moving = true;
+                }
+
                 door.transform.Translate(speed * Time.deltaTime, 0f, 0f);
+            }
+            else
+            {
+                moving = false;
             }
         }
 
     }
 
     void OnTriggerEnter(Collider collision)
-    { 
-
+    {
         open = true;
     }
 

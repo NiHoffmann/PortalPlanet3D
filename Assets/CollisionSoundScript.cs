@@ -6,6 +6,7 @@ public class CollisionSoundScript : MonoBehaviour
 {
     AudioSource source;
     [SerializeField] AudioClip[] clips;
+    bool firstCollision = true;
 
     private void Start()
     {
@@ -13,6 +14,10 @@ public class CollisionSoundScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        source.PlayOneShot(clips[(int)Random.Range(0,clips.Length -0.1f)]);
+        if (!firstCollision)
+        {
+            source.PlayOneShot(clips[(int)Random.Range(0, clips.Length - 0.1f)]);
+        }
+        firstCollision = false;
     }
 }
