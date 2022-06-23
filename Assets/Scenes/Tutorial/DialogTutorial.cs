@@ -75,10 +75,13 @@ public class DialogTutorial : MonoBehaviour
             counter++;
         }
 
+        TextMeshProUGUI objectiveText = objectiveTextField.GetComponent<TextMeshProUGUI>();
+
         int i = breakPoint();
         //gravity gun tutorial
         if (i == (int)State.gravityGunTutorial)
         {
+            objectiveText.SetText("Objective:Try out your Gravitygun");
             weaponSelection.gravityGunUnlocked = true;
             weaponSelection.gravityGun.isEnabled = true;
             weaponSelection.gravityGun.tutorial = true;
@@ -88,18 +91,20 @@ public class DialogTutorial : MonoBehaviour
         //walk to the elevator
         if (i == (int)State.elevatorCollider)
         {
+            objectiveText.SetText("Objective:Get to the Elevator");
             elevatorColliderScript.isEnabled = true;
         }
 
         //pick up portal gun
         if (i == (int)State.portalGunTutorialPickup) 
         {
+            objectiveText.SetText("Objective:Pick up the Portalgun");
             portalGunTutorialScript.isEnabled = true;
         }
 
         //use portalgun
-        if (i == (int)State.portalGunTutorialUse) { 
-        
+        if (i == (int)State.portalGunTutorialUse) {
+            objectiveText.SetText("Objective:Use the Portalgun to get up");
         }
 
         if (i != -1) return;
