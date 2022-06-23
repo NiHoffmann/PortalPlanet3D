@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         doKeyMovement(body);
         doJump(body);
-        if (body.transform.position.y < -20f) {
+        if (body.transform.position.y < -40f) {
             SceneManager.LoadScene("game_over");
         }
     }

@@ -8,6 +8,7 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
     public static float xRotation = 0f;
     public static float yRotation = 0f;
+    public static float zRotation;
     public static bool free = true;
 
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class MouseLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         xRotation = transform.rotation.eulerAngles.x;
         yRotation = transform.rotation.eulerAngles.y;
+        zRotation = transform.rotation.eulerAngles.z;
     }
 
     // Update is called once per frame
@@ -27,8 +29,16 @@ public class MouseLook : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         xRotation -= mouseY;
         yRotation += mouseX;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        
+        while (xRotation > 90f) {
+            xRotation -= 90f;
+        }
+        while(xRotation > 90f)
+        {
+            xRotation -= 90f;
+        }
+
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, zRotation);
         playerBody.transform.rotation = Quaternion.Euler(playerBody.transform.eulerAngles.x, yRotation, playerBody.transform.eulerAngles.z);
      
     }
