@@ -11,7 +11,7 @@ public class DialogTutorial : MonoBehaviour
     [SerializeField] int counter = 0;
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
-    [SerializeField] GameObject objectiveTextField;
+    [SerializeField] public GameObject objectiveTextField;
     [SerializeField] bool isEnabled = false;
     [SerializeField] ElevatorColliderScript elevatorColliderScript;
     [SerializeField] PortalGunTutorialScript portalGunTutorialScript;
@@ -81,6 +81,7 @@ public class DialogTutorial : MonoBehaviour
         //gravity gun tutorial
         if (i == (int)State.gravityGunTutorial)
         {
+            objectiveTextField.SetActive(true);
             objectiveText.SetText("Objective:Try out your Gravitygun");
             weaponSelection.gravityGunUnlocked = true;
             weaponSelection.gravityGun.isEnabled = true;
@@ -91,6 +92,7 @@ public class DialogTutorial : MonoBehaviour
         //walk to the elevator
         if (i == (int)State.elevatorCollider)
         {
+            objectiveTextField.SetActive(true);
             objectiveText.SetText("Objective:Get to the Elevator");
             elevatorColliderScript.isEnabled = true;
         }
@@ -98,12 +100,14 @@ public class DialogTutorial : MonoBehaviour
         //pick up portal gun
         if (i == (int)State.portalGunTutorialPickup) 
         {
+            objectiveTextField.SetActive(true);
             objectiveText.SetText("Objective:Pick up the Portalgun");
             portalGunTutorialScript.isEnabled = true;
         }
 
         //use portalgun
         if (i == (int)State.portalGunTutorialUse) {
+            objectiveTextField.SetActive(true);
             objectiveText.SetText("Objective:Use the Portalgun to get up");
         }
 

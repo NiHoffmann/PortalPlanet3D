@@ -14,6 +14,7 @@ public class PortalGunTutorialEnd : MonoBehaviour
             if (isEnabled)
             {
                 dt.incrementCounter();
+                dt.objectiveTextField.SetActive(false);
             }
 
             isEnabled = false;
