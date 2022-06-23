@@ -1415,7 +1415,7 @@ GameObject:
   - component: {fileID: 174242357}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2184,7 +2184,7 @@ GameObject:
   - component: {fileID: 233543303}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4758,7 +4758,7 @@ GameObject:
   - component: {fileID: 784769488}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10002,7 +10002,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh103938
+  m_Name: pb_Mesh56206
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25020,7 +25020,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh104516
+  m_Name: pb_Mesh56796
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26661,7 +26661,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh104472
+  m_Name: pb_Mesh56752
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27742,7 +27742,7 @@ GameObject:
   - component: {fileID: 1667750148}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27834,7 +27834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667750147}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -15.72, y: -2.8, z: 0.89}
+  m_LocalPosition: {x: -15.72, y: -2.8, z: 3.573}
   m_LocalScale: {x: 0.20000006, y: 0.2, z: 0.20000006}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29880,7 +29880,7 @@ GameObject:
   - component: {fileID: 1747233046}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
