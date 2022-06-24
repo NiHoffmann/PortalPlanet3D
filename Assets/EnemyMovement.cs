@@ -35,9 +35,12 @@ public class EnemyMovement : MonoBehaviour
                 gameObject.GetComponent<Rigidbody>().freezeRotation = false;
             }
         }
-        else if (collision.gameObject.tag == "Player") {
-            storySlideState.state = storySlideState.STATES.ERSTESLEVEL;
-            SceneManager.LoadScene("game_over");
+        else if (collision.gameObject.tag == "Player")
+        {
+            if (!isDead) {
+                storySlideState.state = storySlideState.STATES.ERSTESLEVEL;
+                SceneManager.LoadScene("game_over");
+            }
         }
 
         

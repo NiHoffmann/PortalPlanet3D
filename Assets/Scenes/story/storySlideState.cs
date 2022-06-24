@@ -10,5 +10,5 @@ public static class storySlideState
         CREDITS
     }
 
-    [SerializeField] public static STATES state = STATES.GAMEEND;
+    [SerializeField] public static STATES state = STATES.TUTORIAL1;
 }
