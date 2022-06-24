@@ -1,23 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public GameObject gun;
     public GameObject rayGun;
     [SerializeField] GameObject routeGameObject;
     private Vector3[] route = null;
+    public float viewDistance;
 
     private Vector3 nextPoint;
     private bool isArrived;
 
-    private GameObject target;
+    private GameObject target;                  
     private int childCount;
 
     private float speed = 5f;
     private float modelRotSpeed = 7f;
     private float gunRotSpeed = 3f;
+
+    private float deathCounter = 0f;
+    private float deathInc = 2f;
+    public float maxDeathCounter = 5f;
+    private Boolean deathCounterStarted = false;
+
+    private Boolean isDead = false;
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "KillerBox")
+        {
+            Vector3 vel = collision.gameObject.transform.GetComponent<Rigidbody>().velocity;
+            if (vel.x + vel.y + vel.z > 2f)
+            {
+                isDead = true;
+                gameObject.GetComponent<Rigidbody>().freezeRotation = false;
+            }  
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -44,21 +65,38 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotateRayToTarget();
-        if (IsVisable())
+        if (!isDead)
         {
-            // Player is Visable
-            RotateModelToTarget();
-        }else if ((route != null) && isArrived)
-        {
-            // Update next point to next route point
-            updateChildCount();
-            nextPoint = route[childCount];
-            isArrived = false;
-        } else if (!isArrived)
-        {
-            // Go to next point
-            MoveToPoint();
+            RotateRayToTarget();
+            if (IsVisable())
+            {
+                // Player is Visable
+                RotateModelToTarget();
+            }
+            else if ((route != null) && isArrived)
+            {
+                // Update next point to next route point
+                updateChildCount();
+                nextPoint = route[childCount];
+                isArrived = false;
+            }
+            else if (!isArrived)
+            {
+                // Go to next point
+                MoveToPoint();
+            }
+
+            if (!deathCounterStarted)
+            {
+                if (deathCounter - (deathInc * Time.deltaTime) >= 0f)
+                {
+                    deathCounter -= deathInc * Time.deltaTime;
+                }
+                else if (deathCounter > 0f)
+                {
+                    deathCounter = 0f;
+                }
+            }
         }
     }
 
@@ -77,14 +115,16 @@ public class EnemyMovement : MonoBehaviour
 
         Ray ray = new Ray(rayGunPosition, forwardDirection);
         RaycastHit rayHit;
-        float rayLength = 50.0f;
 
-        bool isHit = Physics.Raycast(ray, out rayHit, rayLength);
+        bool isHit = Physics.Raycast(ray, out rayHit, viewDistance);
 
         if (isHit)
         {
             GameObject hitObject = rayHit.transform.gameObject;
             return hitObject == target;
+        } else
+        {
+            deathCounterStarted = false;
         }
         return false;
     }
@@ -94,10 +134,20 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector3 lookPlayer = target.transform.position - transform.position;
         lookPlayer.y = 0;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPlayer), Time.deltaTime * modelRotSpeed);
+        Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPlayer), Time.deltaTime * modelRotSpeed);
+        transform.rotation = rot;
 
-        Vector3 lookGun = target.transform.position - transform.position;
-        gun.transform.rotation = Quaternion.Slerp(gun.transform.rotation, Quaternion.LookRotation(lookGun), Time.deltaTime * gunRotSpeed);
+        if (Math.Abs(transform.rotation.eulerAngles.y - rot.eulerAngles.y) < 0.01)
+        {
+            deathCounterStarted = true;
+            if (deathCounter > maxDeathCounter)
+            {
+                Debug.Log("youre dead");
+            }else
+            {
+                deathCounter += deathInc * Time.deltaTime;
+            }
+        }
     }
 
     // Move to the next point
