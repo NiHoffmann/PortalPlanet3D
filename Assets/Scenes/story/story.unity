@@ -843,10 +843,14 @@ MonoBehaviour:
   - 
   - 
   gameEndClip: {fileID: 8300000, guid: 632de5d97db51cf42946676865d93ba1, type: 3}
+  credit:
+  - {fileID: 21300000, guid: c525a2e9f6a0e9542b0c79d1db7aa524, type: 3}
+  creditClip: {fileID: 8300000, guid: c6536de37577fdd43917918d77b65321, type: 3}
   tutorialScene: Tutorial1
   ertesLevelScene: Level1
   bossLevelScene: Level2
-  gameEndScene: main_menu
+  gameEndScene: story
+  mainMenuScene: main_menu
   slideImage: {fileID: 1305667072}
   textField: {fileID: 974069929}
   flipSound: {fileID: 8300000, guid: 8a48ac3e67c87de4480e3edf3786ccdd, type: 3}
