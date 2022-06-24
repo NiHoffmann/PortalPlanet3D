@@ -22,7 +22,7 @@ public class PortalGun : MonoBehaviour
         {
             playerAudioSource.PlayOneShot(placePortalSound);
 
-            portalToPlace.transform.position = hit.point;
+            portalToPlace.transform.position = hit.collider.gameObject.transform.position;
             portalToPlace.transform.rotation = hit.collider.gameObject.transform.rotation;
 
             if (Vector3.Distance(portalToPlace.transform.position , otherPortal.transform.position) < 2)

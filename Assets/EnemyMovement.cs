@@ -29,15 +29,17 @@ public class EnemyMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "KillerBox")
+        if (collision.gameObject.tag == "Throwable")
         {
             Vector3 vel = collision.gameObject.transform.GetComponent<Rigidbody>().velocity;
-            if (vel.x + vel.y + vel.z > 2f)
+            if (Mathf.Abs(vel.x + vel.y + vel.z) > 2f)
             {
                 isDead = true;
                 gameObject.GetComponent<Rigidbody>().freezeRotation = false;
             }  
         }
+        Debug.Log(collision.gameObject.tag == "Throwable");
+        Debug.Log(collision.gameObject.transform.GetComponent<Rigidbody>().velocity);
     }
 
     // Start is called before the first frame update
