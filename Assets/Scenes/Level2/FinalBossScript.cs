@@ -18,12 +18,6 @@ public class FinalBossScript : MonoBehaviour
     float timePassed;
     float tol = 0.1f;
 
-    int movingTowards;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -57,7 +51,6 @@ public class FinalBossScript : MonoBehaviour
     }
 
     private void newTargetPosition(int i) {
-        movingTowards = i;
         targetPos = cones[i].transform.position;
         targetPos.y = 40;
     }
