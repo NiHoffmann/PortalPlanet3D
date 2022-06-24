@@ -4,8 +4,11 @@ public static class storySlideState
 {
     public enum STATES { 
         TUTORIAL1,
-        ERSTESLEVEL
+        ERSTESLEVEL,
+        BOSSLEVEL,
+        GAMEEND,
+        CREDITS
     }
 
-    [SerializeField] public static STATES state = STATES.TUTORIAL1;
+    [SerializeField] public static STATES state = STATES.GAMEEND;
 }

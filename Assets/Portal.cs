@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
     Camera playerCam;
     Camera portalCam;
     RenderTexture viewTexture;
-    bool used = false;
+    public bool used = false;
 
     void Awake()
     {
@@ -37,8 +37,8 @@ public class Portal : MonoBehaviour
             }
 
             linkedPortal.used = true;
-            used = true;
-            collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist);
+            collision.gameObject.transform.position = (linkedPortal.transform.position);
+            used = false;
         }
         
     }

@@ -39,7 +39,9 @@ public class PortalGun : MonoBehaviour
                 portalToPlace.GetComponent<Portal>().isEnabled = true;
                 otherPortal.GetComponent<Portal>().isEnabled = true;
             }
-            
+
+            portal1.GetComponent<Portal>().used = false;
+            portal2.GetComponent<Portal>().used = false;
         }
     }
 

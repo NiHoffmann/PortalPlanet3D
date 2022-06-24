@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class storySlide : MonoBehaviour
 {
@@ -11,8 +12,23 @@ public class storySlide : MonoBehaviour
     [SerializeField] Sprite[] erstesLevel = new Sprite[5];
     [SerializeField] string[] textErstesLevel = new string[5];
     [SerializeField] AudioClip erstesLevelClip;
+    [SerializeField] Sprite[] bossLevel = new Sprite[5];
+    [SerializeField] string[] textBossLevel = new string[5];
+    [SerializeField] AudioClip bossClip;
+
+    [SerializeField] Sprite[] gameEnd = new Sprite[5];
+    [SerializeField] string[] textgameEnd = new string[5];
+    [SerializeField] AudioClip gameEndClip;
+
+    [SerializeField] Sprite[] credit = new Sprite[5];
+    [SerializeField] AudioClip creditClip;
+
     [SerializeField] string tutorialScene;
     [SerializeField] string ertesLevelScene;
+    [SerializeField] string bossLevelScene;
+    [SerializeField] string gameEndScene;
+    [SerializeField] string mainMenuScene;
+
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
     [SerializeField] AudioClip flipSound;
@@ -31,6 +47,19 @@ public class storySlide : MonoBehaviour
             source.clip = erstesLevelClip;
             print("Hi2");
         }
+        if (storySlideState.state == storySlideState.STATES.BOSSLEVEL) {
+            source.clip = bossClip;
+        }
+
+        if (storySlideState.state == storySlideState.STATES.GAMEEND) {
+            source.clip = gameEndClip;
+        }
+
+        if (storySlideState.state == storySlideState.STATES.CREDITS)
+        {
+            source.clip = creditClip;
+        }
+
         source.Play();
     }
 
@@ -94,6 +123,61 @@ public class storySlide : MonoBehaviour
 
             setTex(erstesLevel[counter]);
             setText(textErstesLevel);
+        }
+
+        if (storySlideState.state == storySlideState.STATES.BOSSLEVEL) {
+            if (counter >= bossLevel.Length)
+            {
+                counter = 0;
+                SManager.loadScene(bossLevelScene);
+                return;
+            }
+
+            if (counter - 1 >= 0)
+                if (!bossLevel[counter].Equals(current))
+                {
+                    source.PlayOneShot(flipSound);
+                }
+
+            setTex(bossLevel[counter]);
+            setText(textBossLevel);
+        }
+
+        if (storySlideState.state == storySlideState.STATES.GAMEEND)
+        {
+            if (counter >= gameEnd.Length)
+            {
+                counter = 0;
+                storySlideState.state = storySlideState.STATES.CREDITS;
+                SceneManager.LoadScene(gameEndScene);
+                return;
+            }
+
+            if (counter - 1 >= 0)
+                if (!gameEnd[counter].Equals(current))
+                {
+                    source.PlayOneShot(flipSound);
+                }
+
+            setTex(gameEnd[counter]);
+            setText(textgameEnd);
+        }
+
+        if (storySlideState.state == storySlideState.STATES.CREDITS) {
+            if (counter >= credit.Length)
+            {
+                counter = 0;
+                SceneManager.LoadScene(mainMenuScene);
+                return;
+            }
+
+            if (counter - 1 >= 0)
+                if (!credit[counter].Equals(current))
+                {
+                    source.PlayOneShot(flipSound);
+                }
+
+            setTex(credit[counter]);
         }
     }
 

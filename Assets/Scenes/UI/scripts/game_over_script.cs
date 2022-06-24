@@ -12,6 +12,8 @@ public class game_over_script : MonoBehaviour
                 SManager.loadScene("tutorial1");
             if (storySlideState.state == storySlideState.STATES.ERSTESLEVEL)
                 SManager.loadScene("Level1");
+            if (storySlideState.state == storySlideState.STATES.BOSSLEVEL)
+                SManager.loadScene("Level2");
         }
     }
 }
