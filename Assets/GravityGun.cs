@@ -20,14 +20,13 @@ public class GravityGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isEnabled) { return; }
 
         if (grabbedObject && grabbedObject.GetComponent<Rigidbody>() && grabbedObject.CompareTag("Throwable"))
         {
 
             grabbedObject.GetComponent<Rigidbody>().MovePosition(objectHolder.transform.position);
 
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetMouseButtonDown(0) && isEnabled) {
                 grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 grabbedObject.GetComponent<Rigidbody>().AddForce(cam.transform.forward * force, ForceMode.VelocityChange);
                 //collision with player now enabled
@@ -41,7 +40,7 @@ public class GravityGun : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && isEnabled)
         {
             if (grabbedObject && grabbedObject.GetComponent<Rigidbody>() && grabbedObject.CompareTag("Throwable"))
             {

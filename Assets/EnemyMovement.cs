@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
     public GameObject rayGun;
     [SerializeField] GameObject routeGameObject;
+
     private Vector3[] route = null;
     public float viewDistance;
 
@@ -20,11 +22,6 @@ public class EnemyMovement : MonoBehaviour
     private float modelRotSpeed = 7f;
     private float gunRotSpeed = 3f;
 
-    private float deathCounter = 0f;
-    private float deathInc = 2f;
-    public float maxDeathCounter = 5f;
-    private Boolean deathCounterStarted = false;
-
     private Boolean isDead = false;
 
     void OnCollisionEnter(Collision collision)
@@ -36,10 +33,14 @@ public class EnemyMovement : MonoBehaviour
             {
                 isDead = true;
                 gameObject.GetComponent<Rigidbody>().freezeRotation = false;
-            }  
+            }
         }
-        Debug.Log(collision.gameObject.tag == "Throwable");
-        Debug.Log(collision.gameObject.transform.GetComponent<Rigidbody>().velocity);
+        else if (collision.gameObject.tag == "Player") {
+            storySlideState.state = storySlideState.STATES.ERSTESLEVEL;
+            SceneManager.LoadScene("game_over");
+        }
+
+        
     }
 
     // Start is called before the first frame update
@@ -70,10 +71,11 @@ public class EnemyMovement : MonoBehaviour
         if (!isDead)
         {
             RotateRayToTarget();
+
             if (IsVisable())
             {
-                // Player is Visable
-                RotateModelToTarget();
+                transform.position =  Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+                transform.LookAt(target.transform.position);
             }
             else if ((route != null) && isArrived)
             {
@@ -88,25 +90,15 @@ public class EnemyMovement : MonoBehaviour
                 MoveToPoint();
             }
 
-            if (!deathCounterStarted)
-            {
-                if (deathCounter - (deathInc * Time.deltaTime) >= 0f)
-                {
-                    deathCounter -= deathInc * Time.deltaTime;
-                }
-                else if (deathCounter > 0f)
-                {
-                    deathCounter = 0f;
-                }
-            }
+            
         }
     }
+ 
 
     // Update ray gun rotation to player position
     private void RotateRayToTarget()
     {
-        Vector3 lookPlayer = target.transform.position - transform.position;
-        rayGun.transform.rotation = Quaternion.LookRotation(lookPlayer);
+        rayGun.transform.LookAt(target.transform.position);
     }
 
     // Check if player is visable
@@ -125,9 +117,7 @@ public class EnemyMovement : MonoBehaviour
             GameObject hitObject = rayHit.transform.gameObject;
             return hitObject == target;
         } else
-        {
-            deathCounterStarted = false;
-        }
+
         return false;
     }
 
@@ -138,18 +128,6 @@ public class EnemyMovement : MonoBehaviour
         lookPlayer.y = 0;
         Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPlayer), Time.deltaTime * modelRotSpeed);
         transform.rotation = rot;
-
-        if (Math.Abs(transform.rotation.eulerAngles.y - rot.eulerAngles.y) < 0.01)
-        {
-            deathCounterStarted = true;
-            if (deathCounter > maxDeathCounter)
-            {
-                Debug.Log("youre dead");
-            }else
-            {
-                deathCounter += deathInc * Time.deltaTime;
-            }
-        }
     }
 
     // Move to the next point
