@@ -43,7 +43,7 @@ public class FinalBossScript : MonoBehaviour
 
         if (angy) {
             angyTimer += Time.deltaTime;
-            if (angyTimer >= 1.5f) {
+            if (angyTimer >= 2.5f) {
                 Head.material = normalMaterial;
                 angy = false;
                 angyTimer = 0;
@@ -52,7 +52,7 @@ public class FinalBossScript : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
-        if (attackTimer > attackCooldown) {
+        if (attackTimer > attackCooldown || (angy & attackTimer > 1))  {
             GameObject g =  Instantiate(attack, referencePoint.transform.position, Quaternion.identity);
             FInalBossAttack gfbt = g.GetComponent<FInalBossAttack>();
             gfbt.shoot(referencePoint.transform.position, player.transform.position, attackVelocity);
@@ -93,6 +93,7 @@ public class FinalBossScript : MonoBehaviour
                 stationaryTimer -= 2;
                 attackVelocity += 5;
                 attackCooldown -= 1;
+                timePassed = 0;
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             }
                 
