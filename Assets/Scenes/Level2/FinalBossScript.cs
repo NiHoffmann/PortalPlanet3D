@@ -93,7 +93,6 @@ public class FinalBossScript : MonoBehaviour
                 stationaryTimer -= 2;
                 attackVelocity += 5;
                 attackCooldown -= 1;
-                timePassed = 0;
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             }
                 
