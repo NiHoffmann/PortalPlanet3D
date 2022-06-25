@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -46,8 +47,9 @@ public class InGameMenu : MonoBehaviour
     }
 
     private void SaveButton() 
-    { 
-        
+    {
+        ReadFile.WriteString("save", currentLevel);
+        save.image.color = Color.green;
     }
 
     private void ExitButton()

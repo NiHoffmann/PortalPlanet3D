@@ -4,7 +4,6 @@ using UnityEngine;
 public class ButtonBehaviourMainMenu : MonoBehaviour
 {
     public string newGameScene;
-    public string loadGameScene;
     public string settingsScene;
 
 
@@ -20,7 +19,32 @@ public class ButtonBehaviourMainMenu : MonoBehaviour
 
     public void OnButtonPressLoadGame()
     {
-        SceneManager.LoadScene(loadGameScene);
+        storySlideState.state = storySlideState.STATES.TUTORIAL1;
+        try
+        {
+            string saveFile = ReadFile.ReadString("save");
+            if (saveFile.Contains("Level1"))
+            {
+                storySlideState.state = storySlideState.STATES.ERSTESLEVEL;
+            }
+            else
+        if (saveFile.Contains("Level2"))
+            {
+                storySlideState.state = storySlideState.STATES.BOSSLEVEL;
+            }
+            else
+            {
+                OnButtonPressNewGame();
+                return;
+            }
+        }
+        catch
+        {
+
+        }
+        finally {
+            SceneManager.LoadScene("story");
+        }   
     }
 
     public void OnButtonPressSettings()

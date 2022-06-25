@@ -14,7 +14,8 @@ public class CollisionSoundScript : MonoBehaviour
     {
         if (!firstCollision)
         {
-            source.PlayOneShot(clips[(int)Random.Range(0, clips.Length - 0.1f)]);
+            source.clip = clips[(int)Random.Range(0, clips.Length - 0.1f)];
+            source.Play();
         }
         firstCollision = false;
     }
