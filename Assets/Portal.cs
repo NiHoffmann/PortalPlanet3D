@@ -32,6 +32,7 @@ public class Portal : MonoBehaviour
 
             if (collision.gameObject.name.Equals("PlayerCharacter"))
             {
+                PlayerController.isGrounded = false;
                 Quaternion rot = linkedPortal.transform.rotation;
                 MouseLook.yRotation = rot.eulerAngles.y + Mathf.DeltaAngle(transform.localEulerAngles.y, playerCam.transform.localEulerAngles.y) + 180;
             }

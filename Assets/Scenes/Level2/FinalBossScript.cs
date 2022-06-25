@@ -13,7 +13,12 @@ public class FinalBossScript : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] GameObject referencePoint;
     [SerializeField] GameObject attack;
-    [SerializeField] float attackVelocity = 15;
+    [SerializeField] float attackVelocity;
+    [SerializeField] float attackVelocityIncrease = 5f;
+    [SerializeField] float attackSpeed;
+    [SerializeField] float SpeedIncrease = (2f / 4f);
+    [SerializeField] public float attackTimer;
+    [SerializeField] float stationary = 8;
     [SerializeField] float maxHits = 1;
     [SerializeField] DialogLevel2 diaLev2;
     [SerializeField] Material hitMaterial;
@@ -21,7 +26,6 @@ public class FinalBossScript : MonoBehaviour
     [SerializeField] MeshRenderer Head;
 
     Vector3 targetPos;
-    public float attackTimer;
     float timePassed;
     float tol = 0.1f;
     public bool started = false;
@@ -38,7 +42,6 @@ public class FinalBossScript : MonoBehaviour
             transform.LookAt(player.transform.position);
             return;
         }
-
         if (angy) {
             angyTimer += Time.deltaTime;
             if (angyTimer >= 1.5f) {
@@ -48,16 +51,17 @@ public class FinalBossScript : MonoBehaviour
             }
         }
 
+
         attackTimer += Time.deltaTime;
 
-        if (attackTimer > 5) {
+        if (attackTimer > attackSpeed) {
             GameObject g =  Instantiate(attack, referencePoint.transform.position, Quaternion.identity);
             FInalBossAttack gfbt = g.GetComponent<FInalBossAttack>();
             gfbt.shoot(referencePoint.transform.position, player.transform.position, attackVelocity);
             attackTimer = 0;
         }
 
-        if (targetPos == new Vector3(0,0,0) || timePassed >= 5) { 
+        if (targetPos == new Vector3(0,0,0) || timePassed >= stationary) { 
             newTargetPosition(Random.Range(0, (int)(cones.Length - 0.1f)));
         }
 
@@ -87,6 +91,11 @@ public class FinalBossScript : MonoBehaviour
                 angy = true;
                 Head.material = hitMaterial;
                 hitCounter++;
+
+                attackSpeed *= SpeedIncrease;
+                attackVelocity += attackVelocityIncrease;
+                speed *= (1 + (1 - SpeedIncrease));
+                stationary *= SpeedIncrease;
             }
                 
             
@@ -101,6 +110,6 @@ public class FinalBossScript : MonoBehaviour
 
     private void newTargetPosition(int i) {
         targetPos = cones[i].transform.position;
-        targetPos.y = 40;
+        targetPos.y = 32.5f;
     }
 }

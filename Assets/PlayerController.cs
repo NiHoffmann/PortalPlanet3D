@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     // If the player character is on ground
-    public bool isGrounded = true;
+    public static bool isGrounded = true;
     // How fast the player should move (wasd)
     public float movementSpeed = 5.0f;
     // How high the player should jump (space)
@@ -26,10 +26,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("Entered");
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
@@ -38,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        Debug.Log("Exited");
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
