@@ -14,22 +14,26 @@ public class FinalBossScript : MonoBehaviour
     [SerializeField] GameObject referencePoint;
     [SerializeField] GameObject attack;
     [SerializeField] float attackVelocity = 15;
-    [SerializeField] TextMeshProUGUI tmp;
+    [SerializeField] float maxHits = 1;
+    [SerializeField] DialogLevel2 diaLev2;
     Vector3 targetPos;
     public float attackTimer;
     float timePassed;
     float tol = 0.1f;
-    float timePassedTotal;
-
+    public bool started = false;
+    bool alive = true;
+    int hitCounter = 0;
 
     // Update is called once per frame
     void Update()
     {
+        if (!started)
+        {
+            transform.LookAt(player.transform.position);
+            return;
+        }
 
         attackTimer += Time.deltaTime;
-        timePassedTotal += Time.deltaTime;
-
-        tmp.SetText("Survive 1.5 Minutes : " + (int)timePassedTotal+" sec passed");
 
         if (attackTimer > 5) {
             GameObject g =  Instantiate(attack, referencePoint.transform.position, Quaternion.identity);
@@ -56,9 +60,20 @@ public class FinalBossScript : MonoBehaviour
         Vector3 rotAngle = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler( rotAngle.x, rotAngle.y, rotAngle.z);
 
-        if (timePassedTotal > 90) {
-            storySlideState.state = storySlideState.STATES.GAMEEND;
-            SManager.loadScene("story");
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (!alive) return;
+
+        if (other.gameObject.CompareTag("Throwable")) {
+            hitCounter++;
+            if (hitCounter >= maxHits) {
+                alive = false;
+                started = false;
+                GetComponent<Rigidbody>().isKinematic = false;
+                diaLev2.incrementCounter();
+            }
         }
     }
 
