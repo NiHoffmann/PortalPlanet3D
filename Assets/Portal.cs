@@ -37,7 +37,7 @@ public class Portal : MonoBehaviour
             }
 
             linkedPortal.used = true;
-            collision.gameObject.transform.position = (linkedPortal.transform.position) + (linkedPortal.transform.forward.normalized * jumpDist);
+            collision.gameObject.transform.position = (linkedPortal.transform.position);
             used = false;
         }
         
