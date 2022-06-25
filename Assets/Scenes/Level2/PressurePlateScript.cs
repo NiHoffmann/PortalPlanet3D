@@ -45,7 +45,7 @@ public class PressurePlateScript : MonoBehaviour
             activated = true;
 
             Vector3 vec = transform.position;
-            vec.y -= (pressurePlateHeight - 0.012f);
+            vec.y -= (pressurePlateHeight - 0.02f);
             transform.position = vec;
 
             meshRenderer.material = activatedMaterial;

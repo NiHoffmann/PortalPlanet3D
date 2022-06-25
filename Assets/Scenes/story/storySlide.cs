@@ -167,6 +167,7 @@ public class storySlide : MonoBehaviour
             if (counter >= credit.Length)
             {
                 counter = 0;
+                storySlideState.state = storySlideState.STATES.TUTORIAL1;
                 SceneManager.LoadScene(mainMenuScene);
                 return;
             }
