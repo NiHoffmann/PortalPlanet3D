@@ -702,9 +702,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: eb32d8c1d9d9eb34ab4ca20743af5946, type: 3}
   - {fileID: 21300000, guid: 8882202e1da64504f9f9e71928e1236e, type: 3}
   toolTips:
-  - Whenever the circle in the center of your screen lights up you can place a portal
+  - Whenever the circle in the center of your screen lights up, you can place a portal
     there.
-  - "Evoren actually don\xB4t have hands!"
+  - Blue walls indicate that the portal gun is usable on them.
   - You can hold objects with the right mouse button. Throw them by pressing left
     mouse button.
   - A year on Eve is 37 earth years long!
