@@ -803,11 +803,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 47c817df6238bda4f851db04df1a8d12, type: 3}
   - {fileID: 21300000, guid: 0ccd162c779a43d4290cc3b331bcd0e9, type: 3}
   text1:
-  - '[w]The Elypsis galaxy has formed 25 million years ago filling the endless void
-    with the life of creation.'
+  - '[w]In the Elypsis Galaxy far away from the planet you know as earth. This story
+    begins.'
   - '[w]We, the Evoren, living on our little planet called EVE, thrived and continuesly
     improved our technological proficiency.  '
-  - '[w]We constructed Airships to travel through space,  invented gravity jewels
+  - '[w]We constructed Airships to travel through space, invented gravity jewels
     to lessen the burden of physical labour and improved our own bodies so that we
     could withstand the harsh climate of our planet. '
   - '[b]And then there''s me, a simple entity of this universe, that is about to
@@ -818,15 +818,15 @@ MonoBehaviour:
     me a taste of being a space marine and took me on a special delivery mission. '
   - '[b]The details were kept secret but i was told we were transporting something
     world changing. '
-  - '[w]How could I have known that that little box would lead to that much tragedy. 
-    My brother and I suddenly faced a horrifying opponent.'
+  - '[w]But our journey ended abrubtly. My brother and I suddenly faced a horrifying
+    opponent.'
   tutorialClip: {fileID: 8300000, guid: c6536de37577fdd43917918d77b65321, type: 3}
   erstesLevel:
   - {fileID: 21300000, guid: 029f18c78b710e14992c43ea5de29b5b, type: 3}
   - {fileID: 21300000, guid: 2b888ae8b1d3c0b44be4d05208674e51, type: 3}
   - {fileID: 21300000, guid: a4696d9f69719a24ab216ccf654f492b, type: 3}
   textErstesLevel:
-  - '[w]They were after our cargo - the poretal gun.  My brother got badly hurt as
+  - '[b]They were after our cargo - the portal gun. My brother got badly hurt as
     he protected me from falling debris.'
   - '[w]He used the remaining energy of the ship to save me.'
   - '[w]But I promised that I would come back and save him!'
