@@ -16,6 +16,10 @@ public class FinalBossScript : MonoBehaviour
     [SerializeField] float attackVelocity = 15;
     [SerializeField] float maxHits = 1;
     [SerializeField] DialogLevel2 diaLev2;
+    [SerializeField] Material hitMaterial;
+    [SerializeField] Material normalMaterial;
+    [SerializeField] GameObject Head;
+
     Vector3 targetPos;
     public float attackTimer;
     float timePassed;
@@ -23,6 +27,8 @@ public class FinalBossScript : MonoBehaviour
     public bool started = false;
     bool alive = true;
     int hitCounter = 0;
+    bool angy = false;
+    float angyTimer = 0;
 
     // Update is called once per frame
     void Update()
@@ -67,7 +73,18 @@ public class FinalBossScript : MonoBehaviour
         if (!alive) return;
 
         if (other.gameObject.CompareTag("Throwable")) {
-            hitCounter++;
+            if (angy)
+            {
+                angyTimer += Time.deltaTime;
+                return;
+            }
+
+            if (angyTimer > 1.5f) {
+                angyTimer = 0;
+                angy = false;
+            }
+                hitCounter++;
+            
             if (hitCounter >= maxHits) {
                 alive = false;
                 started = false;

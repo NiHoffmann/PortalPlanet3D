@@ -29,6 +29,7 @@ public class MouseLook : MonoBehaviour
         zRotation = transform.eulerAngles.z;
 
         rotate();
+
     }
 
     // Update is called once per frame
@@ -45,9 +46,26 @@ public class MouseLook : MonoBehaviour
         rotate();
     }
 
+    float clamp(float value, float min, float max)
+    {
+        if (value >= 0)
+        {
+            float value_tmp = value - min;
+            if (value_tmp >= 360)
+            {
+                value_tmp -= 360;
+            }
+            return Mathf.Clamp(value_tmp, 0, max - min) + min;
+        }
+        else
+        {
+            return Mathf.Clamp(value, min, -1);
+        }
+    }
+
     void rotate() {
 
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
+        xRotation = clamp(xRotation, -90, 90);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, zRotation);
         playerBody.transform.rotation = Quaternion.Euler(playerBody.transform.eulerAngles.x, yRotation, playerBody.transform.eulerAngles.z);

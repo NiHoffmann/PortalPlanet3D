@@ -20,12 +20,17 @@ public class DialogLevel2 : MonoBehaviour
     [SerializeField] AudioSource soundPlayer;
     [SerializeField] FinalBossScript finalBossScript;
     [SerializeField] WeaponSelection weaponSelection;
+    [SerializeField] GameObject portalSurfaceToBrother;
+    [SerializeField] MouseLook mouseLook;
+    [SerializeField] GameObject Brother;
+
     bool fightingStarted = false;
 
     float timePassedTotal = 0;
     public enum State
     {
         fighting,
+        getToBrother,
         finished
     }
 
@@ -35,6 +40,7 @@ public class DialogLevel2 : MonoBehaviour
         weaponSelection.gravityGunUnlocked = false;
         weaponSelection.portalGun.isEnabled = false;
         weaponSelection.gravityGun.isEnabled = false;
+        portalSurfaceToBrother.SetActive(false);
 
     }
 
@@ -104,7 +110,15 @@ public class DialogLevel2 : MonoBehaviour
 
             timePassedTotal += Time.deltaTime;
 
-            objectiveText.SetText("Survive 1.5 Minutes : " + (int)timePassedTotal + " sec passed");
+            objectiveText.SetText("Save your Brother in 5 Minutes : " + (int)(timePassedTotal/60) + "m"+ (int)(timePassedTotal%60) + "s passed");
+        }
+
+        if (i == (int)State.getToBrother) {
+            if (portalSurfaceToBrother.activeSelf == false) { 
+                portalSurfaceToBrother.SetActive(true);
+                objectiveText.SetText("Get to your borther");
+                mouseLook.lookAt(Brother.transform);
+            }
         }
 
         if (i == (int)State.finished) {

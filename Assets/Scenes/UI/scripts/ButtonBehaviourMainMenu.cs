@@ -7,6 +7,11 @@ public class ButtonBehaviourMainMenu : MonoBehaviour
     public string loadGameScene;
     public string settingsScene;
 
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void OnButtonPressNewGame()
     {
         storySlideState.state = storySlideState.STATES.TUTORIAL1;
