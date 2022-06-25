@@ -59,7 +59,7 @@ public class MouseLook : MonoBehaviour
         }
         else
         {
-            return Mathf.Clamp(value, min, -1);
+            return Mathf.Clamp(value, min, 0);
         }
     }
 
