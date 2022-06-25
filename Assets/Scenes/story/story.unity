@@ -803,22 +803,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 47c817df6238bda4f851db04df1a8d12, type: 3}
   - {fileID: 21300000, guid: 0ccd162c779a43d4290cc3b331bcd0e9, type: 3}
   text1:
-  - '[w]It''s the year 2500 after the Elypsis galaxy has formed. The 3 suns were
-    glittering along the stars, filling the endless void with the life of creation.'
-  - '[w]We, the Evoren, on our little planet called EVE, we thrived and were always
-    developing ways to enhance our technological knowledge.  '
-  - '[w]We used Airships to travel through space, gravity jewels to lessen the burden
-    of physical labour.  We could fly high or use massive Warp stations for fast
-    travel.  '
+  - '[w]The Elypsis galaxy has formed 25 million years ago filling the endless void
+    with the life of creation.'
+  - '[w]We, the Evoren, living on our little planet called EVE, thrived and continuesly
+    improved our technological proficiency.  '
+  - '[w]We constructed Airships to travel through space,  invented gravity jewels
+    to lessen the burden of physical labour and improved our own bodies so that we
+    could withstand the harsh climate of our planet. '
   - '[b]And then there''s me, a simple entity of this universe, that is about to
     embark on a thrilling adventure. '
-  - '[b]I worked to officially become a pilot just like my brother, who is now a
-    high ranking captain of the marines.  I was inspired by him. So I stepped on
-    his path, to write down my own story. '
-  - '[w]After the academic ceremony, my brother promised me to give me a taste of
-    being a space marine. He took me on a special delivery mission. '
+  - '[b]I worked hard to become a pilot just like my brother, who is a high ranking
+    captain of the space marines. '
+  - '[w]As I got my degree from the space academy, my brother promised me to give
+    me a taste of being a space marine and took me on a special delivery mission. '
   - '[b]The details were kept secret but i was told we were transporting something
-    world-changing. '
+    world changing. '
   - '[w]How could I have known that that little box would lead to that much tragedy. 
     My brother and I suddenly faced a horrifying opponent.'
   tutorialClip: {fileID: 8300000, guid: c6536de37577fdd43917918d77b65321, type: 3}
@@ -827,21 +826,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2b888ae8b1d3c0b44be4d05208674e51, type: 3}
   - {fileID: 21300000, guid: a4696d9f69719a24ab216ccf654f492b, type: 3}
   textErstesLevel:
-  - 
-  - 
-  - 
+  - '[w]They were after our cargo - the poretal gun.  My brother got badly hurt as
+    he protected me from falling debris.'
+  - '[w]He used the remaining energy of the ship to save me.'
+  - '[w]But I promised that I would come back and save him!'
   erstesLevelClip: {fileID: 8300000, guid: ee6ba4d8709f1274ea975c3d3dd615e4, type: 3}
   bossLevel:
   - {fileID: 21300000, guid: 93ec65598f86f49428b33edb8dccae12, type: 3}
   textBossLevel:
-  - 
+  - '[w]My journey had come to an end. I finally found him again. The only thing
+    left was to defeat this monster.'
   bossClip: {fileID: 8300000, guid: ee6ba4d8709f1274ea975c3d3dd615e4, type: 3}
   gameEnd:
   - {fileID: 21300000, guid: de280e2091b40b149a2f60173686f5f1, type: 3}
   - {fileID: 21300000, guid: ee39f205380bcf64db971f8d29dbb8a6, type: 3}
   textgameEnd:
-  - 
-  - 
+  - '[b]We were finally reunited! Although we were both tired and hurt we cried tears
+    of joy!'
+  - '[w]We repaired the ship and went back to our snowy home. Ready to share the
+    story of our adventure.'
   gameEndClip: {fileID: 8300000, guid: 632de5d97db51cf42946676865d93ba1, type: 3}
   credit:
   - {fileID: 21300000, guid: c525a2e9f6a0e9542b0c79d1db7aa524, type: 3}
