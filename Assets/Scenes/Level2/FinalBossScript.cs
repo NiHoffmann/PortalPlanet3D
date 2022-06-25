@@ -13,12 +13,7 @@ public class FinalBossScript : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] GameObject referencePoint;
     [SerializeField] GameObject attack;
-    [SerializeField] float attackVelocity;
-    [SerializeField] float attackVelocityIncrease = 5f;
-    [SerializeField] float attackSpeed;
-    [SerializeField] float SpeedIncrease = (2f / 4f);
-    [SerializeField] public float attackTimer;
-    [SerializeField] float stationary = 8;
+    [SerializeField] float attackVelocity = 15;
     [SerializeField] float maxHits = 1;
     [SerializeField] DialogLevel2 diaLev2;
     [SerializeField] Material hitMaterial;
@@ -26,6 +21,7 @@ public class FinalBossScript : MonoBehaviour
     [SerializeField] MeshRenderer Head;
 
     Vector3 targetPos;
+    public float attackTimer;
     float timePassed;
     float tol = 0.1f;
     public bool started = false;
@@ -33,6 +29,8 @@ public class FinalBossScript : MonoBehaviour
     public int hitCounter = 0;
     public bool angy = false;
     public float angyTimer = 0;
+    float stationaryTimer = 7;
+    float attackCooldown = 4.5f;
 
     // Update is called once per frame
     void Update()
@@ -42,6 +40,7 @@ public class FinalBossScript : MonoBehaviour
             transform.LookAt(player.transform.position);
             return;
         }
+
         if (angy) {
             angyTimer += Time.deltaTime;
             if (angyTimer >= 1.5f) {
@@ -51,18 +50,18 @@ public class FinalBossScript : MonoBehaviour
             }
         }
 
-
         attackTimer += Time.deltaTime;
 
-        if (attackTimer > attackSpeed) {
+        if (attackTimer > attackCooldown) {
             GameObject g =  Instantiate(attack, referencePoint.transform.position, Quaternion.identity);
             FInalBossAttack gfbt = g.GetComponent<FInalBossAttack>();
             gfbt.shoot(referencePoint.transform.position, player.transform.position, attackVelocity);
             attackTimer = 0;
         }
 
-        if (targetPos == new Vector3(0,0,0) || timePassed >= stationary) { 
+        if (targetPos == new Vector3(0,0,0) || timePassed >= stationaryTimer) { 
             newTargetPosition(Random.Range(0, (int)(cones.Length - 0.1f)));
+            timePassed = 0;
         }
 
         if (Mathf.Abs(targetPos.x - transform.position.x)<tol && Mathf.Abs(targetPos.y - transform.position.y) < tol && Mathf.Abs(targetPos.z - transform.position.z) < tol)
@@ -71,7 +70,6 @@ public class FinalBossScript : MonoBehaviour
         }
         else
         {
-            timePassed = 0;
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
 
@@ -91,18 +89,18 @@ public class FinalBossScript : MonoBehaviour
                 angy = true;
                 Head.material = hitMaterial;
                 hitCounter++;
-
-                attackSpeed *= SpeedIncrease;
-                attackVelocity += attackVelocityIncrease;
-                speed *= (1 + (1 - SpeedIncrease));
-                stationary *= SpeedIncrease;
+                speed += 5;
+                stationaryTimer -= 2;
+                attackVelocity += 5;
+                attackCooldown -= 1;
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             }
                 
             
             if (hitCounter >= maxHits) {
                 alive = false;
                 started = false;
-                GetComponent<Rigidbody>().isKinematic = false;
+                GetComponent<Rigidbody>().useGravity = true;
                 diaLev2.incrementCounter();
             }
         }
@@ -110,6 +108,6 @@ public class FinalBossScript : MonoBehaviour
 
     private void newTargetPosition(int i) {
         targetPos = cones[i].transform.position;
-        targetPos.y = 32.5f;
+        targetPos.y = 33;
     }
 }
