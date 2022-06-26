@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3832155744319661135}
   m_Layer: 7
   m_Name: PortalSurface
-  m_TagString: Untagged
+  m_TagString: PortalSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 3832155744564598564}
   m_Layer: 7
   m_Name: PortalSurface
-  m_TagString: Untagged
+  m_TagString: PortalSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 3832155744714691815}
   m_Layer: 7
   m_Name: PortalSurface
-  m_TagString: Untagged
+  m_TagString: PortalSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 3832155744750540066}
   m_Layer: 7
   m_Name: PortalSurface
-  m_TagString: Untagged
+  m_TagString: PortalSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 3832155744866171304}
   m_Layer: 7
   m_Name: PortalSurface
-  m_TagString: Untagged
+  m_TagString: PortalSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 3832155746269454279}
   m_Layer: 7
   m_Name: PortalSurface
-  m_TagString: Untagged
+  m_TagString: PortalSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

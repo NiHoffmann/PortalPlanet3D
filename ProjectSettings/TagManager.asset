@@ -10,6 +10,7 @@ TagManager:
   - PortalCube
   - Enemy
   - PortalCubeCollider
+  - PortalSurface
   layers:
   - Default
   - TransparentFX
