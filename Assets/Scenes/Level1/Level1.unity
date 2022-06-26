@@ -846,8 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0fc581d3769254689ea65aa3b6ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseLook: {fileID: 379217381}
-  lootAtThis: {fileID: 910414080}
+  objective: {fileID: 854505247}
 --- !u!1 &92409960 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1191901840038026, guid: ba119e6cbefaaa641aeef16f2b469789, type: 3}

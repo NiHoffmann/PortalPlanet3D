@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LookUpScript : MonoBehaviour
 {
-    [SerializeField] MouseLook mouseLook;
-    [SerializeField] GameObject lootAtThis;
+    [SerializeField] GameObject objective;
+    
     bool activated = false;
     float timer = 0;
     // Start is called before the first frame update
@@ -15,7 +16,8 @@ public class LookUpScript : MonoBehaviour
     {  
         timer += Time.deltaTime;
         if (!activated && timer > 90) {
-            mouseLook.lookAt(lootAtThis.transform);
+            TextMeshProUGUI tmp = objective.GetComponent<TextMeshProUGUI>();
+            tmp.SetText("Tip: sometimes the answer is above you");
             activated = true;
         }
     }
