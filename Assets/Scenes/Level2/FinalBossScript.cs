@@ -57,6 +57,7 @@ public class FinalBossScript : MonoBehaviour
             FInalBossAttack gfbt = g.GetComponent<FInalBossAttack>();
             gfbt.shoot(referencePoint.transform.position, player.transform.position, attackVelocity);
             attackTimer = 0;
+            GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         }
 
         if (targetPos == new Vector3(0,0,0) || timePassed >= stationaryTimer) { 
