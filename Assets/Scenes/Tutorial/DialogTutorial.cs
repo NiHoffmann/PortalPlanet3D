@@ -47,6 +47,7 @@ public class DialogTutorial : MonoBehaviour
         if (breakPoint() == -1) {
             soundPlayer.clip = sounds[(int)Random.Range(0, sounds.Length - 0.1f)];
             soundPlayer.Play();
+            Time.timeScale = 0;
             isEnabled = true;
         }
     }
@@ -56,6 +57,7 @@ public class DialogTutorial : MonoBehaviour
         {
             if (breakPoints[i] == counter)
             {
+                Time.timeScale = 1;
                 isEnabled = false;
                 return i;      
             }          
