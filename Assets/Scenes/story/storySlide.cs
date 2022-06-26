@@ -191,15 +191,15 @@ public class storySlide : MonoBehaviour
         TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
         if (text[counter].Length > 3)
         {
-            if (text[counter].Contains("[b]"))
+            if (text[counter].ToLower().Contains(("[b]").ToLower()))
             {
                 tmp.color = Color.black;
             }
-            if (text1[counter].Contains("[w]"))
+            if (text1[counter].ToLower().Contains(("[w]").ToLower()))
             {
                 tmp.color = Color.white;
             }
-            if (text1[counter].Contains("[r]"))
+            if (text1[counter].ToLower().Contains(("[r]").ToLower()))
             {
                 tmp.color = Color.red;
             }
