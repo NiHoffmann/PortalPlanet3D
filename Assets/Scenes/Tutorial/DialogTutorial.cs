@@ -48,7 +48,6 @@ public class DialogTutorial : MonoBehaviour
             soundPlayer.clip = sounds[(int)Random.Range(0, sounds.Length - 0.1f)];
             soundPlayer.Play();
             isEnabled = true;
-            Time.timeScale = 0;
         }
     }
 
@@ -121,7 +120,6 @@ public class DialogTutorial : MonoBehaviour
         }
 
         if (i != -1) {
-            Time.timeScale = 1; 
             return;
         } 
 

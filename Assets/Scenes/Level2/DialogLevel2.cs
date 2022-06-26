@@ -41,7 +41,6 @@ public class DialogLevel2 : MonoBehaviour
         weaponSelection.portalGun.isEnabled = false;
         weaponSelection.gravityGun.isEnabled = false;
         portalSurfaceToBrother.SetActive(false);
-
     }
 
     public void setTexture(Sprite s)
@@ -55,7 +54,6 @@ public class DialogLevel2 : MonoBehaviour
         counter++;
         if (breakPoint() == -1)
         {
-            Time.timeScale = 0;
             soundPlayer.clip = sounds[soundNr[counter]];
             soundPlayer.Play();
             isEnabled = true;
@@ -140,7 +138,6 @@ public class DialogLevel2 : MonoBehaviour
 
         if (i != -1)
         {
-            Time.timeScale = 1;
             return;
         }
     }
