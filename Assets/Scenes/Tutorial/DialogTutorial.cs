@@ -40,6 +40,7 @@ public class DialogTutorial : MonoBehaviour
             soundPlayer.clip = sounds[(int)Random.Range(0, sounds.Length - 0.1f)];
             soundPlayer.Play();
             isEnabled = true;
+            Time.timeScale = 0;
         }
     }
 
@@ -111,7 +112,10 @@ public class DialogTutorial : MonoBehaviour
             objectiveText.SetText("Objective:Use the Portalgun to get up");
         }
 
-        if (i != -1) return;
+        if (i != -1) {
+            Time.timeScale = 1; 
+            return;
+        } 
 
         if (counter >= text.Length) {
             isEnabled = false;

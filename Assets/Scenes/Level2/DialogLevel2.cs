@@ -54,6 +54,7 @@ public class DialogLevel2 : MonoBehaviour
         counter++;
         if (breakPoint() == -1)
         {
+            Time.timeScale = 0;
             soundPlayer.clip = sounds[soundNr[counter]];
             soundPlayer.Play();
             isEnabled = true;
@@ -126,7 +127,10 @@ public class DialogLevel2 : MonoBehaviour
             SManager.loadScene("story");
         }
 
-        if (i != -1) return;
+        if (i != -1) {
+            Time.timeScale = 1;
+            return;
+        }
 
         if (counter >= text.Length)
         {
