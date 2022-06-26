@@ -518,7 +518,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newGameScene: story
-  loadGameScene: load_game
   settingsScene: settings
 --- !u!1 &1090507669
 GameObject:
@@ -846,7 +845,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newGameScene: 
-  loadGameScene: 
   settingsScene: 
 --- !u!1 &1305667070
 GameObject:
@@ -1067,7 +1065,7 @@ GameObject:
   - component: {fileID: 1952767809}
   - component: {fileID: 1952767808}
   m_Layer: 5
-  m_Name: SettingsButton
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1139,7 +1137,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 831255599}
         m_TargetAssemblyTypeName: ButtonBehaviourMainMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnButtonPressExit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

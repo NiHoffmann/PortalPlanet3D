@@ -47,9 +47,12 @@ public class ButtonBehaviourMainMenu : MonoBehaviour
         }   
     }
 
-    public void OnButtonPressSettings()
+    public void OnButtonPressExit()
     {
-        SceneManager.LoadScene(settingsScene);
+        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 
 }
