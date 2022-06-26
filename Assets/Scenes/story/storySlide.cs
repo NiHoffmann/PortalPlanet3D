@@ -32,6 +32,7 @@ public class storySlide : MonoBehaviour
     [SerializeField] RawImage slideImage;
     [SerializeField] GameObject textField;
     [SerializeField] AudioClip flipSound;
+    TextMeshProUGUI tmp;
     Sprite current;
     int counter = 0;
 
@@ -188,24 +189,22 @@ public class storySlide : MonoBehaviour
 
     void setText(string[] text)
     {
-        TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
+        tmp = textField.GetComponent<TextMeshProUGUI>();
         if (text[counter].Length > 3)
         {
-            if (text[counter].ToLower().Contains(("[b]").ToLower()))
+            if (text[counter].Substring(0, 3) == "[b]");
             {
                 tmp.color = Color.black;
             }
-            if (text1[counter].ToLower().Contains(("[w]").ToLower()))
+            if (text[counter].Substring(0, 3) == "[w]")
             {
                 tmp.color = Color.white;
             }
-            if (text1[counter].ToLower().Contains(("[r]").ToLower()))
+            if (text[counter].Substring(0, 3) == "[r]")
             {
                 tmp.color = Color.red;
             }
-        }
-
-        if(text[counter].Length >= 3)
             tmp.SetText(text[counter].Substring(3));
+        }         
     }
 }
