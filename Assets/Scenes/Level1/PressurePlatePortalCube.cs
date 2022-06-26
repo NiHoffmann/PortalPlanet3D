@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PressurePlatePortalCube : MonoBehaviour
@@ -9,7 +10,9 @@ public class PressurePlatePortalCube : MonoBehaviour
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] float pressurePlateHeight = 0.1f;
     [SerializeField] GameObject cube;
+    [SerializeField] GameObject objective;
     bool activated = false;
+    bool usedFirstTime = false;
     float timePassed = 0;
     public GameObject currentCube;
 
@@ -35,6 +38,12 @@ public class PressurePlatePortalCube : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (!usedFirstTime) {
+            usedFirstTime = true;
+            TextMeshProUGUI objectiveText = objective.GetComponent<TextMeshProUGUI>();
+            objectiveText.SetText("Tip: you can place portals on the rainbow cube");
+        }
+
         if (!activated)
         {
             Destroy(currentCube);
