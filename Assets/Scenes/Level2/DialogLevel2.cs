@@ -23,10 +23,10 @@ public class DialogLevel2 : MonoBehaviour
     [SerializeField] GameObject portalSurfaceToBrother;
     [SerializeField] MouseLook mouseLook;
     [SerializeField] GameObject Brother;
+    float timer = 0;
 
     bool fightingStarted = false;
 
-    float timePassedTotal = 0;
     public enum State
     {
         fighting,
@@ -41,11 +41,11 @@ public class DialogLevel2 : MonoBehaviour
         weaponSelection.portalGun.isEnabled = false;
         weaponSelection.gravityGun.isEnabled = false;
         portalSurfaceToBrother.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void setTexture(Sprite s)
     {
-        Time.timeScale = 0;
         slideImage.texture = s.texture;
     }
 
@@ -57,6 +57,7 @@ public class DialogLevel2 : MonoBehaviour
             soundPlayer.clip = sounds[soundNr[counter]];
             soundPlayer.Play();
             isEnabled = true;
+            Time.timeScale = 0;
         }
 
     }
@@ -67,6 +68,7 @@ public class DialogLevel2 : MonoBehaviour
         {
             if (breakPoints[i] == counter)
             {
+                Time.timeScale = 1;
                 isEnabled = false;
                 return i;
             }
@@ -77,6 +79,8 @@ public class DialogLevel2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TextMeshProUGUI objectiveText = objectiveTextField.GetComponent<TextMeshProUGUI>();
+
         if (!isEnabled)
         {
             slideImage.gameObject.SetActive(false);
@@ -94,8 +98,6 @@ public class DialogLevel2 : MonoBehaviour
 
         }
 
-        TextMeshProUGUI objectiveText = objectiveTextField.GetComponent<TextMeshProUGUI>();
-
         int i = breakPoint();
         //fighting
         if (i == (int)State.fighting)
@@ -107,10 +109,7 @@ public class DialogLevel2 : MonoBehaviour
                 weaponSelection.portalGun.isEnabled = true;
                 fightingStarted = true;
             }
-
-            timePassedTotal += Time.deltaTime;
-
-            objectiveText.SetText("Save your Brother in 5 Minutes : " + (int)(timePassedTotal/60) + "m"+ (int)(timePassedTotal%60) + "s passed");
+            objectiveText.SetText("Hits " + finalBossScript.hitCounter + "/3");
         }
 
         if (i == (int)State.getToBrother) {
@@ -122,8 +121,12 @@ public class DialogLevel2 : MonoBehaviour
         }
 
         if (i == (int)State.finished) {
-            storySlideState.state = storySlideState.STATES.GAMEEND;
-            SManager.loadScene("story");
+            timer += Time.deltaTime;
+            if (timer > 3)
+            {
+                storySlideState.state = storySlideState.STATES.GAMEEND;
+                SManager.loadScene("story");
+            }
         }
 
         if (counter >= text.Length)
