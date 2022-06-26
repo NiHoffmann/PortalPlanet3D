@@ -46,6 +46,7 @@ public class DialogLevel2 : MonoBehaviour
 
     public void setTexture(Sprite s)
     {
+        Time.timeScale = 0;
         slideImage.texture = s.texture;
     }
 
@@ -127,11 +128,6 @@ public class DialogLevel2 : MonoBehaviour
             SManager.loadScene("story");
         }
 
-        if (i != -1) {
-            Time.timeScale = 1;
-            return;
-        }
-
         if (counter >= text.Length)
         {
             isEnabled = false;
@@ -141,5 +137,11 @@ public class DialogLevel2 : MonoBehaviour
         setTexture(sprites[spriteNr[counter]]);
         TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
         tmp.SetText(text[counter]);
+
+        if (i != -1)
+        {
+            Time.timeScale = 1;
+            return;
+        }
     }
 }

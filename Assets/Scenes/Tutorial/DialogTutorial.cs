@@ -17,6 +17,8 @@ public class DialogTutorial : MonoBehaviour
     [SerializeField] PortalGunTutorialScript portalGunTutorialScript;
     [SerializeField] AudioClip[] sounds;
     [SerializeField] AudioSource soundPlayer;
+    [SerializeField] MouseLook mouseLook;
+    [SerializeField] GameObject lookAt;
     public enum State
     {
         gravityGunTutorial,
@@ -27,6 +29,12 @@ public class DialogTutorial : MonoBehaviour
 
     //
     [SerializeField] WeaponSelection weaponSelection;
+
+    private void Start()
+    {
+        mouseLook.lookAt(lookAt.transform);
+        Time.timeScale = 0;
+    }
 
     public void setTexture(Sprite s)
     {
