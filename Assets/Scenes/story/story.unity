@@ -815,7 +815,7 @@ MonoBehaviour:
   - '[b]I worked hard to become a pilot just like my brother, who is a high ranking
     captain of the space marines. '
   - '[w]As I got my degree from the space academy, my brother promised me to give
-    me a taste of being a space marine and took me on a special delivery mission. '
+    me a taste outer space and took me on a special delivery mission. '
   - '[b]The details were kept secret but i was told we were transporting something
     world changing. '
   - '[w]But our journey ended abrubtly. My brother and I suddenly faced a horrifying
@@ -841,8 +841,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: de280e2091b40b149a2f60173686f5f1, type: 3}
   - {fileID: 21300000, guid: ee39f205380bcf64db971f8d29dbb8a6, type: 3}
   textgameEnd:
-  - '[b]We were finally reunited! Although we were both tired and hurt we cried tears
-    of joy!'
+  - '[b]We were finally reunited! Although we were both tired and hurt, we cried
+    tears of joy!'
   - '[w]We repaired the ship and went back to our snowy home. Ready to share the
     story of our adventure.'
   gameEndClip: {fileID: 8300000, guid: 632de5d97db51cf42946676865d93ba1, type: 3}
