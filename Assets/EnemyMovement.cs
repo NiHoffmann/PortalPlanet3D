@@ -18,14 +18,20 @@ public class EnemyMovement : MonoBehaviour
     private GameObject target;                  
     private int childCount;
 
-    private float speed = 5f;
+    private float speed = 7.5f;
     private float modelRotSpeed = 7f;
     private float gunRotSpeed = 3f;
 
     private Boolean isDead = false;
+    private float deathTimer = 0;
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("PortalCube"))
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<BoxCollider>());
+        }
+
         if (collision.gameObject.tag == "Throwable")
         {
             Vector3 vel = collision.gameObject.transform.GetComponent<Rigidbody>().velocity;
@@ -77,7 +83,7 @@ public class EnemyMovement : MonoBehaviour
 
             if (IsVisable())
             {
-                transform.position =  Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
                 transform.LookAt(target.transform.position);
             }
             else if ((route != null) && isArrived)
@@ -93,7 +99,14 @@ public class EnemyMovement : MonoBehaviour
                 MoveToPoint();
             }
 
-            
+
+        }
+        else {
+           // deathTimer += Time.deltaTime;
+           // if (deathTimer >= 10) {
+           //     deathTimer = 0;
+           //     isDead = false;
+           // }
         }
     }
  
@@ -113,7 +126,7 @@ public class EnemyMovement : MonoBehaviour
         Ray ray = new Ray(rayGunPosition, forwardDirection);
         RaycastHit rayHit;
 
-        bool isHit = Physics.Raycast(ray, out rayHit, viewDistance);
+        bool isHit = Physics.Raycast(ray, out rayHit, viewDistance, ~LayerMask.GetMask("Portal"));
 
         if (isHit)
         {

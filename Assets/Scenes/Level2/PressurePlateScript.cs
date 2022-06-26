@@ -33,6 +33,7 @@ public class PressurePlateScript : MonoBehaviour
                 vec.y += (pressurePlateHeight - 0.02f);
                 transform.position = vec;
 
+                timePassed = 0;
                 meshRenderer.material = idleMaterial;
             }
         }

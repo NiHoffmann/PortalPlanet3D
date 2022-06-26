@@ -1074,6 +1074,7 @@ MonoBehaviour:
   portalWindow: {fileID: 545397361}
   isEnabled: 1
   jumpDist: 0.75
+  portalCube: {fileID: 0}
   used: 0
 --- !u!65 &545397360
 BoxCollider:
@@ -1086,7 +1087,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &545397361
 MeshRenderer:
@@ -1871,6 +1872,7 @@ MonoBehaviour:
   portalWindow: {fileID: 824552509}
   isEnabled: 1
   jumpDist: 0.75
+  portalCube: {fileID: 0}
   used: 0
 --- !u!23 &824552509
 MeshRenderer:
@@ -2021,7 +2023,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &824552512
 MeshFilter:
@@ -4809,9 +4811,12 @@ MonoBehaviour:
   force: 30
   objectHolder: {fileID: 1763227772}
   isEnabled: 1
+  portal1: {fileID: 824552507}
+  portal2: {fileID: 545397357}
   tutorial: 0
   tutorialTaskCompleted: 0
   dt: {fileID: 0}
+  grabbedObject: {fileID: 0}
 --- !u!114 &2085226748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4824,7 +4829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c40f41472c84836b4cbd5d2914168c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 1
   movementSpeed: 5
   jumpHeight: 4.5
   camera: {fileID: 793418441}
