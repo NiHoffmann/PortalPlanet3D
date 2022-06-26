@@ -40,12 +40,10 @@ public class storySlide : MonoBehaviour
         if (storySlideState.state == storySlideState.STATES.TUTORIAL1)
         {
             source.clip = tutorialClip;
-            print("Hi");
         }
         if (storySlideState.state == storySlideState.STATES.ERSTESLEVEL) 
         {
             source.clip = erstesLevelClip;
-            print("Hi2");
         }
         if (storySlideState.state == storySlideState.STATES.BOSSLEVEL) {
             source.clip = bossClip;
@@ -193,15 +191,15 @@ public class storySlide : MonoBehaviour
         TextMeshProUGUI tmp = textField.GetComponent<TextMeshProUGUI>();
         if (text[counter].Length > 3)
         {
-            if (text[counter].Substring(0, 3).Equals("[b]"))
+            if (text[counter].Contains("[b]"))
             {
                 tmp.color = Color.black;
             }
-            if (text1[counter].Substring(0, 3).Equals("[w]"))
+            if (text1[counter].Contains("[w]"))
             {
                 tmp.color = Color.white;
             }
-            if (text1[counter].Substring(0, 3).Equals("[r]"))
+            if (text1[counter].Contains("[r]"))
             {
                 tmp.color = Color.red;
             }
